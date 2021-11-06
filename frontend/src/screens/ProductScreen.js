@@ -54,6 +54,7 @@ const ProductScreen = ({ match, history }) => {
                 src={product.image}
                 width="auto"
                 height="600"
+                onClick={addToWishlistHandler}
                 fluid
               ></Image>
               <Image

@@ -61,7 +61,7 @@ function Header() {
                     <LinkContainer to="/profile">
                       <NavDropdown.Item>Profile</NavDropdown.Item>
                     </LinkContainer>
-                    <LinkContainer to="/dealer/orders">
+                    <LinkContainer to={`/${userInfo.isManufacturer ? "manufacturer" : "dealer"}/orders/${userInfo._id}`}>
                       <NavDropdown.Item>Orders</NavDropdown.Item>
                     </LinkContainer>
                     <NavDropdown.Item onClick={logoutHandler}>

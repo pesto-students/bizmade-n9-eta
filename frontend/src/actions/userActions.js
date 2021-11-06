@@ -52,7 +52,7 @@ export const login = (email, password) => async (dispatch) => {
       payload: data,
     });
 
-    localStorage.setItem("userInfo", JSON.stringify(data));
+    //localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
     dispatch({
       type: USER_LOGIN_FAIL,
@@ -107,7 +107,7 @@ export const register =
         payload: data,
       });
 
-      localStorage.setItem("userInfo", JSON.stringify(data));
+      //localStorage.setItem("userInfo", JSON.stringify(data));
     } catch (error) {
       dispatch({
         type: USER_REGISTER_FAIL,
@@ -187,7 +187,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
       payload: data,
     });
 
-    localStorage.setItem("userInfo", JSON.stringify(data));
+    //localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
     const message =
       error.response && error.response.data.message
