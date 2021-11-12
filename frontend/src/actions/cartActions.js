@@ -50,10 +50,10 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
       },
     });
 
-    console.log(cartStuff);
+    // console.log(cartStuff);
 
-    console.log("cart stuff");
-    console.log(cartStuff.data);
+    // console.log("cart stuff");
+    // console.log(cartStuff.data);
 
     const { data2 } = await axios.post(
       `/api/cart/product/${id}`,

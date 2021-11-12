@@ -9,10 +9,10 @@ import User from "../models/userModel.js";
 const getCartItems = asyncHandler(async (req, res) => {
   //console.log("endpoint hit");
   // console.log("req params");
-  // console.log(req.query.email);
+  console.log(req.query.email);
   // console.log("endpoint hit");
-  const myCart = await Cart.find({ email: "keerthi23@example.com" });
-  console.log(myCart);
+  const myCart = await Cart.find({ email: req.query.email });
+  // console.log(myCart);
   res.json(myCart);
 });
 
