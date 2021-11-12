@@ -8,19 +8,15 @@ import Loader from "../components/Loader";
 import {
   listMyOrders,
   listManufacturerOrders,
+  orderStatus,
 } from "../actions/orderActions.js";
 
 const DealerOrderHistory = ({ history, match }) => {
   const userId = match.params.id;
   const dispatch = useDispatch();
 
-  // const orderList = useSelector((state) => state.orderList);
-  // const { loading, error, orders } = orderList;
-  // console.log(orders);
-  const [status, setStatus] = useState("");
   const orderListMy = useSelector((state) => state.orderListMy);
   var { loading: loadingOrders, error: errorOrders, orders } = orderListMy;
-  console.log(orders);
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -35,7 +31,7 @@ const DealerOrderHistory = ({ history, match }) => {
     } else {
       history.push("/login");
     }
-  }, [dispatch, history, userInfo]);
+  }, [dispatch, history, userInfo, userId]);
 
   return (
     <div>
@@ -134,11 +130,8 @@ const DealerOrderHistory = ({ history, match }) => {
                                   name="status"
                                   id="status"
                                   onChange={(e) => {
-                                    console.log(e.target.value);
-                                    setStatus(e.target.value);
-                                    o.status = status;
-                                    console.log(`Order ID : ${o._id}`);
-                                    // dispatch()
+                                    e.preventDefault();
+                                    dispatch(orderStatus({_id: o._id, status: `${e.target.value}`}))
                                   }}
                                 >
                                   <option value="Order Placed">

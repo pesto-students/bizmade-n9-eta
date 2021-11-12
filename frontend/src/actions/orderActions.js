@@ -20,6 +20,8 @@ import {
   ORDER_DELIVER_SUCCESS,
   ORDER_DELIVER_FAIL,
   ORDER_STATUS_REQUEST,
+  ORDER_STATUS_SUCCESS,
+  ORDER_STATUS_FAIL,
 } from "../constants/orderConstants";
 
 import { logout } from "./userActions";
@@ -205,7 +207,7 @@ export const deliverOrder = (order) => async (dispatch, getState) => {
   }
 };
 
-export const orderStatus = (orderId, status) => async (dispatch, getState) => {
+export const orderStatus = (itemId, status) => async (dispatch, getState) => {
   try {
     dispatch({
       type: ORDER_STATUS_REQUEST,
@@ -224,12 +226,12 @@ export const orderStatus = (orderId, status) => async (dispatch, getState) => {
 
     const { data } = await axios.put(
       `/api/orders/`,
-      { id: orderId, status },
+      { id: itemId, status },
       config
     );
 
     dispatch({
-      type: ORDER_PAY_SUCCESS,
+      type: ORDER_STATUS_SUCCESS,
       payload: data,
     });
   } catch (error) {
@@ -243,7 +245,7 @@ export const orderStatus = (orderId, status) => async (dispatch, getState) => {
     }
 
     dispatch({
-      type: ORDER_PAY_FAIL,
+      type: ORDER_STATUS_FAIL,
       payload: message,
     });
   }

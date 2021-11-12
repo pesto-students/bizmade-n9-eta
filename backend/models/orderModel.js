@@ -20,14 +20,7 @@ const orderSchema = mongoose.Schema(
         },
         status: {
           type: String,
-          enum: [
-            "Paid",
-            "Processing",
-            "Shipped",
-            "Delivered",
-            "Not Paid",
-            "Order Placed",
-          ],
+          required: true,
           default: "Order Placed",
         },
         manufacturer: { type: String, required: true },
@@ -45,7 +38,7 @@ const orderSchema = mongoose.Schema(
     },
     paymentMethod: {
       type: String,
-      required: true,
+      required: false,
     },
     paymentResult: {
       id: { type: String },
