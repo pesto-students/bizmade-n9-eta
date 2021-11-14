@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
@@ -16,17 +16,17 @@ import "../styles.css";
 import { Link } from "react-router-dom";
 import Product from "../components/Product";
 import { addToWishlist } from "../actions/wishlistActions";
+import { addToCart } from "../actions/cartActions";
 import { listProductDetails, listAllProducts } from "../actions/productActions";
+import Loader from "../components/Loader";
 
 const ProductScreen = ({ match, history }) => {
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
 
-  const productAllList = useSelector((state) => 
-      state.productAllList
-  );
-  const  { productslist }  = productAllList;
+  const productAllList = useSelector((state) => state.productAllList);
+  const { productslist } = productAllList;
   console.log(productslist);
 
   const [qty, setQty] = useState(1);
@@ -37,9 +37,11 @@ const ProductScreen = ({ match, history }) => {
   const { userInfo } = userLogin;
 
   const wishlistCreate = useSelector((state) => state.wishlistCreate);
+  const addCart = useSelector((state) => state.addCart);
+  const { loading: addCartLoading, success } = addCart;
   // const { wishlistItem } = wishlistCreate;
 
-  useEffect(() => { 
+  useEffect(() => {
     if (!product._id || product._id !== match.params.id) {
       dispatch(listProductDetails(match.params.id));
     } else {
@@ -47,28 +49,29 @@ const ProductScreen = ({ match, history }) => {
       setTotalPrice((product.price + 0.18 * product.price).toFixed(0));
     }
     const fetchedProducts = async () => {
-          const { data } = await axios.get("/api/products/all");
-          setProducts(data);
-        };
+      const { data } = await axios.get("/api/products/all");
+      setProducts(data);
+    };
     fetchedProducts();
     dispatch(listAllProducts());
     // setQty(product.minQuantity);
     // setTotalPrice(product.price * product.minQuantity);
   }, [dispatch, match, product]);
 
-
   const category = [];
   products.map((p) => {
-    if(p.category === product.category){
+    if (p.category === product.category) {
       category.push(p);
-    }  
+    }
   });
 
-  const addToCartHandler = ({hisory}) => {
+  const addToCartHandler = ({ hisory }) => {
     if (!userInfo) {
       history.push("/login");
     } else {
-      history.push(`/cart/${match.params.id}?qty=${qty}`);
+      // history.push(`/cart/${match.params.id}?qty=${qty}`);
+      dispatch(addToCart(match.params.id, qty));
+      history.push("/cart");
     }
   };
 
@@ -80,7 +83,7 @@ const ProductScreen = ({ match, history }) => {
       history.push(`/wishlist`);
     }
   };
- 
+
   return (
     <Container className="pt-5 container">
       <Row>
@@ -202,28 +205,31 @@ const ProductScreen = ({ match, history }) => {
       </p>
       <Row className="p-1">
         <Col md={12}>
-      {category.map((product, index) => index<4 && (
-        
-          <Card
-            style={{ width: "15rem" }}
-            className="float-right pt-4 m-2 shadow"
-            onClick={() =>  window.scrollTo(0, 0,"smooth")}
-          >
-            <Link to={`/product/${product._id}`}>
-            <Card.Img variant="top" src={product.image} />
-            </Link>
-            <Card.Body>
-            <Link to={`/product/${product._id}`}>
-              <Card.Title>{product.name}</Card.Title>
-            </Link>
-              <Card.Text>
-                <p>{product.manufacturer}</p>
-                55,990
-              </Card.Text>
-            </Card.Body>
-          </Card>
-      ))};
-       </Col>
+          {category.map(
+            (product, index) =>
+              index < 4 && (
+                <Card
+                  style={{ width: "15rem" }}
+                  className="float-right pt-4 m-2 shadow"
+                  onClick={() => window.scrollTo(0, 0, "smooth")}
+                >
+                  <Link to={`/product/${product._id}`}>
+                    <Card.Img variant="top" src={product.image} />
+                  </Link>
+                  <Card.Body>
+                    <Link to={`/product/${product._id}`}>
+                      <Card.Title>{product.name}</Card.Title>
+                    </Link>
+                    <Card.Text>
+                      <p>{product.manufacturer}</p>
+                      55,990
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              )
+          )}
+          ;
+        </Col>
       </Row>
     </Container>
   );

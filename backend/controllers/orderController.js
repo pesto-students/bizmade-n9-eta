@@ -114,7 +114,7 @@ const updateOrderToDelivered = asyncHandler(async (req, res) => {
 });
 
 const getManufacturerOrders = asyncHandler(async (req, res) => {
-   const name = req.body.name;
+  const name = req.body.name;
   const order = await Order.find({
     "orderItems.manufacturer": "Apple",
   });
@@ -144,18 +144,20 @@ const getOrders = asyncHandler(async (req, res) => {
 });
 
 const updateOrderStatus = asyncHandler(async (req, res) => {
+  console.log("Hi");
   const { id } = req.body;
- 
-  const  itemId  = id._id;
+
+  const itemId = id._id;
   const status = id.status;
-  
- const order = await Order.findOneAndUpdate({"orderItems._id" : itemId},
-    {$set: {'orderItems.$.status': status}}, 
-    {multi: true});
 
-    const updatedOrder = await order.save();
-    res.json(updatedOrder);
+  const order = await Order.findOneAndUpdate(
+    { "orderItems._id": itemId },
+    { $set: { "orderItems.$.status": status } },
+    { multi: true }
+  );
 
+  const updatedOrder = await order.save();
+  res.json(updatedOrder);
 });
 
 export {

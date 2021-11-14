@@ -131,9 +131,18 @@ const DealerOrderHistory = ({ history, match }) => {
                                   id="status"
                                   onChange={(e) => {
                                     e.preventDefault();
-                                    dispatch(orderStatus({_id: o._id, status: `${e.target.value}`}))
+                                    dispatch(
+                                      orderStatus({
+                                        _id: o._id,
+                                        status: `${e.target.value}`,
+                                      })
+                                    );
+                                    window.location.reload();
                                   }}
                                 >
+                                  <option value="none" selected disabled hidden>
+                                    Select Status
+                                  </option>
                                   <option value="Order Placed">
                                     Order Placed
                                   </option>
