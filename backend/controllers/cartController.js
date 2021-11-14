@@ -7,13 +7,10 @@ import User from "../models/userModel.js";
 // @route GET /api/cart
 // @access Private/Admin
 const getCartItems = asyncHandler(async (req, res) => {
-  //console.log("endpoint hit");
-  // console.log("req params");
   console.log(req.query.email);
-  // console.log("endpoint hit");
+  // console.log(req.body.email);
   const myCart = await Cart.find({ email: req.query.email });
-  // console.log(myCart);
-  res.json(myCart);
+  myCart.length === 0 ? res.json([{ cartItems: [] }]) : res.json(myCart);
 });
 
 // @desc ADD cart item
@@ -27,7 +24,7 @@ const addToCart = asyncHandler(async (req, res) => {
   if (myCart.length) {
     const data = req.body;
     // console.log("myCart.cartItems->");
-    // console.log(myCart[0].cartItems);
+    console.log(myCart[0].cartItems);
 
     myCart[0].cartItems.push(req.body.cartItems[0]);
     const newCart = await myCart[0].save();

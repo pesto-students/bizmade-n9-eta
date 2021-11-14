@@ -4,6 +4,9 @@ import {
   CART_ADD_REQUEST,
   CART_ADD_SUCCESS,
   CART_ADD_FAIL,
+  CART_DETAILS_REQUEST,
+  CART_DETAILS_SUCCESS,
+  CART_DETAILS_FAIL,
   CART_CLEAR_ITEMS,
   CART_REMOVE_REQUEST,
   CART_REMOVE_SUCCESS,
@@ -64,6 +67,7 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
           {
             product: data._id,
             name: data.name,
+            image: data.image,
             qty: Number(qty),
             minQuantity: data.minQuantity,
             maxQuantity: data.maxQuantity,
@@ -87,8 +91,60 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
     if (message === "Not authorized, token failed") {
       dispatch(logout());
     }
+    dispatch({
+      type: CART_ADD_FAIL,
+      payload: message,
+    });
   }
-  localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
+  // localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
+};
+
+export const getCartDetails = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: CART_DETAILS_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.get(
+      "/api/cart/",
+      {
+        params: {
+          email: userInfo.email,
+        },
+      },
+      config
+    );
+    console.log(`Payload ${data}`);
+
+    dispatch({
+      type: CART_DETAILS_SUCCESS,
+      payload: data[0],
+    });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+
+    if (message === "Not authorized, token failed") {
+      dispatch(logout());
+    }
+
+    dispatch({
+      type: CART_DETAILS_FAIL,
+      payload: message,
+    });
+  }
 };
 
 // export const getMyCart = (email) => {

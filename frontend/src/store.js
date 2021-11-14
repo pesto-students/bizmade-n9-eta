@@ -11,7 +11,7 @@ import {
   productListReducer,
   productDetailsReducer,
   productDeleteReducer,
-  productAllListReducer
+  productAllListReducer,
 } from "./reducers/productReducers.js";
 
 import {
@@ -31,10 +31,14 @@ import {
   orderDetailsReducer,
   orderPayReducer,
   orderDeliverReducer,
-  orderStatusReducer
+  orderStatusReducer,
 } from "./reducers/orderReducers.js";
 
-import { cartReducer } from "./reducers/cartReducers.js";
+import {
+  cartReducer,
+  cartDetailsReducer,
+  AddCartReducer,
+} from "./reducers/cartReducers.js";
 import { wishlistReducer } from "./reducers/wishlistReducer.js";
 
 const reducer = combineReducers({
@@ -46,7 +50,9 @@ const reducer = combineReducers({
   productTopRated: productTopRatedReducer,
   productAllList: productAllListReducer,
 
-  cart: cartReducer,
+  // cart: cartReducer,
+  cart: cartDetailsReducer,
+  addCart: AddCartReducer,
   wishlist: wishlistReducer,
 
   userRegister: userRegisterReducer,
@@ -63,36 +69,32 @@ const reducer = combineReducers({
   orderDetails: orderDetailsReducer,
   orderPay: orderPayReducer,
   orderDeliver: orderDeliverReducer,
-  orderStatus: orderStatusReducer
+  orderStatus: orderStatusReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")
   ? JSON.parse(localStorage.getItem("userInfo"))
   : null;
 
-const cartItemsFromStorage = localStorage.getItem("cartItems")
-  ? JSON.parse(localStorage.getItem("cartItems"))
-  : [];
+// const cartItemsFromStorage = localStorage.getItem("cartItems")
+//   ? JSON.parse(localStorage.getItem("cartItems"))
+//   : [];
 
-const shippingAddressFromStorage = localStorage.getItem("shippingAddress")
-  ? JSON.parse(localStorage.getItem("shippingAddress"))
-  : {};
+// const shippingAddressFromStorage = localStorage.getItem("shippingAddress")
+//   ? JSON.parse(localStorage.getItem("shippingAddress"))
+//   : {};
 
 // const combinedReducer = combineReducers({
 //     productList: createDataReducer('products'),
 //     userList: createDataReducer('users')
 // });
 
-
-
-
 const initialState = {
-  cart: {
-    cartItems: cartItemsFromStorage,
-    shippingAddress: shippingAddressFromStorage,
-  },
+  // cart: {
+  //   cartItems: cartItemsFromStorage,
+  //   shippingAddress: shippingAddressFromStorage,
+  // },
   userLogin: { userInfo: userInfoFromStorage },
-
 };
 
 const store = createStore(
