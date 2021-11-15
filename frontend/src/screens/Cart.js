@@ -50,6 +50,7 @@ const Cart = ({ match, location, history }) => {
 
   const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id));
+    console.log(id);
   };
 
   const checkoutHandler = () => {
@@ -127,9 +128,7 @@ const Cart = ({ match, location, history }) => {
                             <Button
                               type="button"
                               variant="primary"
-                              onClick={() =>
-                                removeFromCartHandler(item.product)
-                              }
+                              onClick={() => removeFromCartHandler(item._id)}
                             >
                               {/* <i className="fas fa-trash"></i> */}
                               DELETE
