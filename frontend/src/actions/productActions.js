@@ -33,7 +33,7 @@ export const listProducts =
       dispatch({ type: PRODUCT_LIST_REQUEST });
 
       const { data } = await axios.get(
-        `/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
+        `https://bizmade.herokuapp.com/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
       );
       dispatch({
         type: PRODUCT_LIST_SUCCESS,
