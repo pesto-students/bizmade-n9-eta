@@ -26,6 +26,7 @@ import {
 
 import { logout } from "./userActions";
 import { CART_CLEAR_ITEMS } from "../constants/cartConstants";
+import { baseURL } from "../constants/appConstants.js";
 
 export const createOrder = (order) => async (dispatch, getState) => {
   try {
@@ -46,7 +47,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.post(`/api/orders`, order, config);
+    const { data } = await axios.post(`${baseURL}/api/orders`, order, config);
 
     dispatch({
       type: ORDER_CREATE_SUCCESS,
@@ -93,7 +94,7 @@ export const getOrderDetails = (id, userId) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.get(
-      `/api/orders/${id}`,
+      `${baseURL}/api/orders/${id}`,
       { user: userId },
       config
     );
@@ -138,7 +139,7 @@ export const payOrder =
       };
 
       const { data } = await axios.put(
-        `/api/orders/${orderId}/pay`,
+        `${baseURL}/api/orders/${orderId}/pay`,
         paymentResult,
         config
       );
@@ -181,7 +182,7 @@ export const deliverOrder = (order) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.put(
-      `/api/orders/${order._id}/deliver`,
+      `${baseURL}/api/orders/${order._id}/deliver`,
       {},
       config
     );
@@ -225,7 +226,7 @@ export const orderStatus = (itemId, status) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.put(
-      `/api/orders/`,
+      `${baseURL}/api/orders/`,
       { id: itemId, status },
       config
     );
@@ -268,7 +269,10 @@ export const listMyOrders = (userId) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/orders/myorders/${userId}`, config);
+    const { data } = await axios.get(
+      `${baseURL}/api/orders/myorders/${userId}`,
+      config
+    );
 
     dispatch({
       type: ORDER_LIST_MY_SUCCESS,
@@ -309,7 +313,7 @@ export const listManufacturerOrders =
         },
       };
       const { data } = await axios.get(
-        `/api/orders/myorders/`,
+        `${baseURL}/api/orders/myorders/`,
         {
           name: manufacturer,
         },
@@ -353,7 +357,7 @@ export const listOrders = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/orders`, config);
+    const { data } = await axios.get(`${baseURL}/api/orders`, config);
 
     dispatch({
       type: ORDER_LIST_SUCCESS,

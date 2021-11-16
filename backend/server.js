@@ -7,7 +7,7 @@ import orderRoutes from "./routes/orderRoutes.js";
 import wishlistRoutes from "./routes/wishlistRoutes.js";
 import cartRoutes from "./routes/cartRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
-import path from 'path'
+import path from "path";
 
 dotenv.config();
 
@@ -29,9 +29,11 @@ app.get("/api/config/paypal", (req, res) =>
 );
 
 const __dirname = path.resolve();
-app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 const PORT = process.env.PORT;
+
+app.get("*", (req, res) => res.json("Server running"));
 
 app.listen(
   PORT,

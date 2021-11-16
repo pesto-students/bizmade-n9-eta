@@ -5,6 +5,7 @@ import {
   addToCart,
   deleteCartItem,
 } from "../controllers/cartController.js";
+import { protect } from "../middleware/authMiddleware.js";
 
 router.route("/").get(getCartItems);
 router.route("/product/:id").post(addToCart);
