@@ -19,6 +19,7 @@ import { addToWishlist } from "../actions/wishlistActions";
 import { addToCart } from "../actions/cartActions";
 import { listProductDetails, listAllProducts } from "../actions/productActions";
 import Loader from "../components/Loader";
+import { baseURL } from "../constants/appConstants";
 
 const ProductScreen = ({ match, history }) => {
   const dispatch = useDispatch();
@@ -49,7 +50,7 @@ const ProductScreen = ({ match, history }) => {
       setTotalPrice((product.price + 0.18 * product.price).toFixed(0));
     }
     const fetchedProducts = async () => {
-      const { data } = await axios.get("/api/products/all");
+      const { data } = await axios.get(`${baseURL}/api/products/all`);
       setProducts(data);
     };
     fetchedProducts();
