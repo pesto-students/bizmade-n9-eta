@@ -10,8 +10,12 @@ import {
   ListGroup,
   Card,
   Form,
+  OverlayTrigger,
+  Tooltip,
+  Button
 } from "react-bootstrap";
-import Heart from "./images/heart.png";
+import "../styles.css";
+import tooltip from "./images/tooltip.png";
 import "../styles.css";
 import { Link } from "react-router-dom";
 import Product from "../components/Product";
@@ -80,20 +84,23 @@ const ProductScreen = ({ match, history }) => {
       history.push(`/wishlist`);
     }
   };
+
+  const renderTooltip = props => (
+    <Tooltip {...props}>Add more quantity to apply discount</Tooltip>
+  );
+
  
   return (
     <Container className="pt-5 container">
       <Row>
         <Col md={6} className="py-md-50">
-          <h3 className="blue align-left">{product.name}</h3>
-          <h5 className="grey align-left">{product.brand}</h5>
+          <h3 className="blue align-left"><strong>{product.name}</strong></h3>
           <ListGroup>
             <ListGroup.Item>
               <Image
                 src={product.image}
                 width="auto"
-                height="600"
-                fluid
+                height="350"
               ></Image>
               {/* <Image
                 src={Heart}
@@ -116,7 +123,7 @@ const ProductScreen = ({ match, history }) => {
             <thead className="bg-blue white">
               <tr>
                 <th scope="col">Price</th>
-                <th scope="col">{product.price}</th>
+                <th scope="col">{qty * (product.price)}</th>
               </tr>
             </thead>
             <tbody className="bg-lightblue">
@@ -124,26 +131,29 @@ const ProductScreen = ({ match, history }) => {
                 <th scope="row" className="grey">
                   GST
                 </th>
-                <td>{(0.18 * product.price).toFixed(0)}</td>
+                <td>{(0.18 * qty * product.price).toFixed(0)}</td>
               </tr>
               <tr>
                 <th scope="row" className="grey">
                   Delivery fee
                 </th>
-                <td>150</td>
+                <td>{150 * qty}</td>
               </tr>
               <tr>
-                <th scope="row" className="grey">
-                  Discount
+                <th scope="row" className="grey">Discount{" "}
+                <OverlayTrigger placement="top" overlay={renderTooltip}>
+                  <Image src={tooltip} width="20px" height="20px"></Image>
+                </OverlayTrigger>
                 </th>
-                <td colSpan="2">0</td>
+                <td colSpan="2">{ (qty > product.minQuantity) ? (qty*300) : 0 }</td>
               </tr>
               <tr>
                 <th scope="row" className="grey">
                   Total Price
                 </th>
                 <td colSpan="2" className="font-weight-bold">
-                  {totalPrice}
+                  {((qty * (product.price)) + (0.18 * qty * product.price) + 
+                  (150 * qty) - ((qty > product.minQuantity) ? (qty*300) : 0 )).toFixed(0)}
                 </td>
               </tr>
               <tr className="table-border">
@@ -187,7 +197,7 @@ const ProductScreen = ({ match, history }) => {
       </Row>
       <Row className="pt-5">
         <Col md={6} className="align-left">
-          <table class="table table-responsive table-borderless pt-5">
+          <table class="table table-responsive table-borderless pt-4">
             <tbody>
               <tr>
                 <th scope="row">Description</th>
@@ -214,12 +224,17 @@ const ProductScreen = ({ match, history }) => {
             </Link>
             <Card.Body>
             <Link to={`/product/${product._id}`}>
-              <Card.Title>{product.name}</Card.Title>
+              <Card.Title className="card-title"
+              style={{ color: "#0fafe9", fontSize: "medium", fontWeight: "500" }}>
+                <h4><strong>{product.name}</strong></h4></Card.Title>
             </Link>
-              <Card.Text>
+              <Card.Text
+              style={{ color: "#0fafe9", fontSize: "medium", fontWeight: "500" }} as="h4">
                 <p>{product.manufacturer}</p>
-                55,990
               </Card.Text>
+              <Card.Text
+              style={{ color: "#3B3B3B", fontSize: "medium", fontWeight: "500" }}
+              as="h3"><strong>&#8377;{product.price}</strong></Card.Text>
             </Card.Body>
           </Card>
       ))};

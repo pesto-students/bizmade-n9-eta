@@ -54,6 +54,19 @@ function HomeScreen({ match, history }) {
     }
   }, [dispatch, keyword, pageNumber]);
 
+  const categoriesArray = [];
+  const categories = () => {
+    products.map((p) => {
+     
+        categoriesArray.push(p.category);
+        console.log(p.category);
+     
+      return categoriesArray;
+    });
+  }
+  categories();
+  console.log(categoriesArray);
+
   const categoryHandler = (e) => {
     const keyword = e.target.dataset.value;
     e.preventDefault();
@@ -108,7 +121,7 @@ function HomeScreen({ match, history }) {
                           className="all"
                           name="fq"
                           data-value="all"
-                          onClick={(e) => categoryHandler()}
+                          onClick={() => { history.push("/") }}
                         >
                           All
                         </div>
@@ -137,20 +150,12 @@ function HomeScreen({ match, history }) {
                           Healthcare
                         </div>
                         <div
-                          className="home"
+                          className="machinery"
                           name="fq"
-                          data-value="home"
+                          data-value="machinery"
                           onClick={(e) => categoryHandler(e)}
                         >
-                          Home and Garden
-                        </div>
-                        <div
-                          className="automobile"
-                          name="fq"
-                          data-value="automobile"
-                          onClick={(e) => categoryHandler(e)}
-                        >
-                          Automobile
+                          Machinery
                         </div>
                         <div
                           className="entertainment"
@@ -161,13 +166,22 @@ function HomeScreen({ match, history }) {
                           Entertainment
                         </div>
                         <div
-                          className="machinery"
+                          className="home"
                           name="fq"
-                          data-value="machinery"
+                          data-value="home"
                           onClick={(e) => categoryHandler(e)}
                         >
-                          Machinery
+                          Home and Garden
                         </div>
+                        <div
+                          className="beauty"
+                          name="fq"
+                          data-value="beauty"
+                          onClick={(e) => categoryHandler(e)}
+                        >
+                          Beauty and Personal care
+                        </div>
+                        
                       </div>
                     </div>
                   </Col>
