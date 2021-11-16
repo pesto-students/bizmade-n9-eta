@@ -13,6 +13,7 @@ import {
 } from "../constants/wishlistConstants";
 
 import { logout } from "./userActions";
+import { baseURL } from "../constants/appConstants.js";
 
 export const addToWishlist = (id, qty) => async (dispatch, getState) => {
   const { data } = await axios.get(`/api/products/${id}`);
@@ -48,7 +49,7 @@ export const addToWishlist = (id, qty) => async (dispatch, getState) => {
       },
     };
 
-    const wishListStuff = await axios.get("/api/wishlist", {
+    const wishListStuff = await axios.get(`${baseURL}/api/wishlist`, {
       params: {
         email: userInfo.email,
       },
@@ -59,7 +60,7 @@ export const addToWishlist = (id, qty) => async (dispatch, getState) => {
     console.log("wishList stuff");
     console.log(wishListStuff.data);
     const { data2 } = await axios.post(
-      `/api/wishlist/product/${id}`,
+      `${baseURL}/api/wishlist/product/${id}`,
       JSON.stringify({
         user: userInfo._id,
         email: userInfo.email,

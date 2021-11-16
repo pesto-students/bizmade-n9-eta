@@ -11,7 +11,7 @@ import {
   orderStatus,
 } from "../actions/orderActions.js";
 
-const DealerOrderHistory = ({ history, match }) => {
+const OrderHistory = ({ history, match }) => {
   const userId = match.params.id;
   const dispatch = useDispatch();
 
@@ -169,4 +169,4 @@ const DealerOrderHistory = ({ history, match }) => {
   );
 };
 
-export default DealerOrderHistory;
+export default OrderHistory;

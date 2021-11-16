@@ -18,9 +18,10 @@ import {
   CART_SAVE_PAYMENT_METHOD,
 } from "../constants/cartConstants";
 import { logout } from "./userActions";
+import { baseURL } from "../constants/appConstants.js";
 
 export const addToCart = (id, qty) => async (dispatch, getState) => {
-  const { data } = await axios.get(`/api/products/${id}`);
+  const { data } = await axios.get(`${baseURL}/api/products/${id}`);
   dispatch({
     type: CART_ADD_REQUEST,
     payload: {
@@ -47,7 +48,7 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    const cartStuff = await axios.get("/api/cart", {
+    const cartStuff = await axios.get(`${baseURL}/api/cart`, {
       params: {
         email: userInfo.email,
       },
@@ -59,7 +60,7 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
     // console.log(cartStuff.data);
 
     const { data2 } = await axios.post(
-      `/api/cart/product/${id}`,
+      `${baseURL}/api/cart/product/${id}`,
       JSON.stringify({
         user: userInfo._id,
         email: userInfo.email,
@@ -116,7 +117,7 @@ export const getCartDetails = () => async (dispatch, getState) => {
     };
 
     const { data } = await axios.get(
-      "/api/cart/",
+      `${baseURL}/api/cart/`,
       {
         params: {
           email: userInfo.email,
@@ -176,7 +177,7 @@ export const removeFromCart = (id) => (dispatch, getState) => {
       },
     };
 
-    // const { data } = await axios.delete(`/api/cart/${id}`, config);
+    // const { data } = await axios.delete(`${baseURL}/api/cart/${id}`, config);
 
     // dispatch({
     //   type: CART_REMOVE_SUCCESS,

@@ -9,7 +9,7 @@ import PaymentScreen from "./screens/PaymentScreen";
 import Checkout from "./screens/Checkout";
 import OrderConfirmation from "./screens/OrderConfirmation";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
-import DealerOrderHistory from "./screens/DealerOrderHistory";
+import OrderHistory from "./screens/OrderHistory";
 import ManufacOrderHistory from "./screens/ManufacOrderHistory";
 import EditProduct from "./screens/EditProduct";
 import AddProduct from "./screens/AddProduct";
@@ -42,7 +42,7 @@ function App() {
               path="/orderconfirmation/:id"
               component={OrderConfirmation}
             />
-            <Route path="/orders/:id" component={DealerOrderHistory} />
+            <Route path="/orders/:id" component={OrderHistory} />
             <Route
               path="/manufacturer/orders"
               component={ManufacOrderHistory}
