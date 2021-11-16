@@ -66,7 +66,7 @@ const AddProduct = ({ history }) => {
     const file = e.target.files[0];
     const image = await resizeFile(file);
     const formData = new FormData();
-    console.log(image);
+    // console.log(image);
     formData.append("image", image);
     setUploading(true);
 
@@ -179,20 +179,19 @@ const AddProduct = ({ history }) => {
                 />
               </Form.Group>
               <Form.Group className="mb-1" controlId="category">
-                <Form.Label className="float-start fw-bold">Category</Form.Label>
-                  <Form.Select 
-                  onChange={(e) => setCategory(e.target.value)}
-                  >
-                    <option>Select Category</option>
-                    <option value="Clothing">Clothing</option>
-                    <option value="Electronics">Electronics</option>
-                    <option value="Healthcare">Healthcare</option>
-                    <option value="Home">Home</option>
-                    <option value="Beauty">Beauty and Personal care</option>
-                    <option value="Entertainment">Entertainment</option>
-                    <option value="Machinery">Machinery</option>
-                  </Form.Select>
-                
+                <Form.Label className="float-start fw-bold">
+                  Category
+                </Form.Label>
+                <Form.Select onChange={(e) => setCategory(e.target.value)}>
+                  <option>Select Category</option>
+                  <option value="Clothing">Clothing</option>
+                  <option value="Electronics">Electronics</option>
+                  <option value="Healthcare">Healthcare</option>
+                  <option value="Home">Home</option>
+                  <option value="Beauty">Beauty and Personal care</option>
+                  <option value="Entertainment">Entertainment</option>
+                  <option value="Machinery">Machinery</option>
+                </Form.Select>
               </Form.Group>
               <Form.Group controlId="image" className="mb-1">
                 <Form.Label className="float-start fw-bold">Image</Form.Label>

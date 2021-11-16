@@ -313,10 +313,7 @@ export const listManufacturerOrders =
         },
       };
       const { data } = await axios.get(
-        `${baseURL}/api/orders/myorders/`,
-        {
-          name: manufacturer,
-        },
+        `${baseURL}/api/orders/${manufacturer}`,
         config
       );
 

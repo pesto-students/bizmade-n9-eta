@@ -116,7 +116,7 @@ const updateOrderToDelivered = asyncHandler(async (req, res) => {
 const getManufacturerOrders = asyncHandler(async (req, res) => {
   const name = req.body.name;
   const order = await Order.find({
-    "orderItems.manufacturer": "Apple",
+    "orderItems.manufacturer": req.params.id,
   });
   if (order) {
     res.json(order);

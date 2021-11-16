@@ -21,14 +21,24 @@ function ProductCarousel() {
   ) : error ? (
     <Message variant="danger">{error}</Message>
   ) : (
-    <Carousel pause="hover" className="bg-dark carousel">
+    <Carousel
+      pause="hover"
+      className="bg-dark carousel"
+      style={{ width: "auto" }}
+    >
       {products.map((product) => (
         <Carousel.Item key={product._id}>
           <Link to={`/product/${product._id}`}>
-            <img className="d-block carousel" src={product.image} alt={product.name} />
+            <img
+              className="d-block carousel"
+              src={product.image}
+              alt={product.name}
+            />
             <Carousel.Caption className="carousel-caption">
               <h2 style={{ color: "#0fafe9" }}>
-                <strong>{product.name} (&#8377;{product.price})</strong>
+                <strong>
+                  {product.name} (&#8377;{product.price})
+                </strong>
               </h2>
             </Carousel.Caption>
           </Link>
