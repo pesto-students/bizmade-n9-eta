@@ -9,6 +9,7 @@ import Loader from "../components/Loader";
 import { listProducts, createProduct } from "../actions/productActions";
 import { PRODUCT_CREATE_RESET } from "../constants/productConstants";
 import Resizer from "react-image-file-resizer";
+import { baseURL } from "../constants/appConstants";
 
 const AddProduct = ({ history }) => {
   const [name, setName] = useState("");
@@ -77,7 +78,11 @@ const AddProduct = ({ history }) => {
         },
       };
 
-      const { data } = await axios.post("/api/upload", formData, config);
+      const { data } = await axios.post(
+        `${baseURL}/api/upload`,
+        formData,
+        config
+      );
 
       setImage(data);
       setUploading(false);

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import "../styles.css";
 import { Container, Button, Form, Row, Col } from "react-bootstrap";
@@ -8,6 +8,7 @@ import Loader from "../components/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { listProductDetails, updateProduct } from "../actions/productActions";
 import { PRODUCT_UPDATE_RESET } from "../constants/productConstants";
+import { baseURL } from "../constants/appConstants";
 
 const EditProduct = ({ match, history }) => {
   const productId = match.params.id;
@@ -59,25 +60,29 @@ const EditProduct = ({ match, history }) => {
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
     const formData = new FormData();
-    formData.append('image', file);
+    formData.append("image", file);
     setUploading(true);
 
     try {
       const config = {
         headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      }
+          "Content-Type": "multipart/form-data",
+        },
+      };
 
-      const { data } = await axios.post('/api/upload', formData, config);
+      const { data } = await axios.post(
+        `${baseURL}/api/upload`,
+        formData,
+        config
+      );
 
-      setImage(data)
-      setUploading(false)
-    } catch(error) {
+      setImage(data);
+      setUploading(false);
+    } catch (error) {
       console.log(error);
       setUploading(false);
     }
-  }
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -198,14 +203,14 @@ const EditProduct = ({ match, history }) => {
                 </Form.Group>
                 <Form.Group controlId="formFile" className="mb-1">
                   <Form.Label className="float-start fw-bold">Image</Form.Label>
-                  <Form.Control type="file"
-                    id="image-file" 
-                    label="choose File" 
-                    custom 
+                  <Form.Control
+                    type="file"
+                    id="image-file"
+                    label="choose File"
+                    custom
                     onChange={uploadFileHandler}
-                    >
-                  </Form.Control>
-                  { uploading && <Loader /> }
+                  ></Form.Control>
+                  {uploading && <Loader />}
                 </Form.Group>
                 <Form.Group className="mb-1" controlId="maxquantity">
                   <Form.Label className="float-start fw-bold">
