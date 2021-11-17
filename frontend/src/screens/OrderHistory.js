@@ -18,6 +18,13 @@ const OrderHistory = ({ history, match }) => {
   const orderListMy = useSelector((state) => state.orderListMy);
   var { loading: loadingOrders, error: errorOrders, orders } = orderListMy;
 
+  const ordersStatus = useSelector((state) => state.orderStatus);
+  var {
+    loading: loadingOrdersStatus,
+    error: errorOrdersStatus,
+    success,
+  } = ordersStatus;
+
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
@@ -31,16 +38,16 @@ const OrderHistory = ({ history, match }) => {
     } else {
       history.push("/login");
     }
-  }, [dispatch, history, userInfo, userId]);
+  }, [dispatch, history, userInfo, userId, success]);
 
   return (
     <div>
       <>
         <h3>{userInfo.name}'s Orders</h3>
         {/* <p>{userInfo._id}</p> */}
-        {loadingOrders ? (
+        {loadingOrders || loadingOrdersStatus ? (
           <Loader />
-        ) : errorOrders ? (
+        ) : errorOrders || errorOrdersStatus ? (
           <Message variant="danger">{errorOrders}</Message>
         ) : (
           <>
@@ -137,7 +144,10 @@ const OrderHistory = ({ history, match }) => {
                                         status: `${e.target.value}`,
                                       })
                                     );
-                                    window.location.reload();
+                                    // dispatch(
+                                    //   listManufacturerOrders(userInfo.name)
+                                    // );
+                                    // window.location.reload();
                                   }}
                                 >
                                   <option value="none" selected disabled hidden>
