@@ -14,6 +14,7 @@ import {
   addToCart,
   getCartDetails,
   removeFromCart,
+  deleteCartFromLocal,
 } from "../actions/cartActions";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
@@ -57,28 +58,32 @@ const Rawcart = ({ history }) => {
 
   const removeFromCartHandler = (id) => {
     console.log("deletete");
-    console.log(id);
-    console.log(cartItems);
-    let cartLength = cartItems.length;
-    let index = -1;
-    console.log(cartLength);
-    for (let i = 0; i < cartLength; i++) {
-      if (cartItems[i]._id == id) {
-        index = i;
-      }
-    }
-    console.log("index is ");
-    console.log(index);
-    cartItems.splice(index, 1);
+    // console.log(id);
+    // console.log(cartItems);
+    // let cartLength = cartItems.length;
+    // let index = -1;
+    // console.log(cartLength);
+    // for (let i = 0; i < cartLength; i++) {
+    //   if (cartItems[i]._id == id) {
+    //     index = i;
+    //   }
+    // }
+    // console.log("index is ");
+    // console.log(index);
 
-    console.log("set state first call");
-    setCartItems(cartItems);
-    console.log("set state second call");
-    setCartItems((cartItems) => {
-      console.log("inside set state");
-      console.log(cartItems);
-      return cartItems;
-    });
+    // let newCartItems = [...cartItems];
+    // newCartItems.splice(index, 1);
+
+    // console.log("set state first call");
+    // setCartItems(newCartItems);
+    // console.log("set state second call");
+    // setCartItems((state) => {
+    //   console.log("inside set state");
+    //   console.log(state);
+    //   return state;
+    // });
+
+    dispatch(deleteCartFromLocal(id));
 
     let args = {
       method: "delete",

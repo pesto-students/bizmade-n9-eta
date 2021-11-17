@@ -136,11 +136,11 @@ export const cartDetailsReducer = (
         loading: false,
         error: action.payload,
       };
-    // case "DELETE_CART_REQUEST":
-    //   return {
-    //     ...state,
-    //     cartItems: state.cartItems.filter((x) => x.product !== action.payload),
-    //   };
+    case "DELETE_CART_FROM_LOCAL":
+      return {
+        ...state,
+        cartItems: state.cartItems.filter((x) => x._id !== action.payload),
+      };
     case CART_DETAILS_RESET:
       return { cartItems: [] };
     default:

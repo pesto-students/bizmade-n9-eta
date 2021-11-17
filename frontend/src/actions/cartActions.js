@@ -216,3 +216,10 @@ export const savePaymentMethod = (data) => (dispatch) => {
 
   localStorage.setItem("paymentMethod", JSON.stringify(data));
 };
+
+export const deleteCartFromLocal = (id) => (dispatch) => {
+  dispatch({
+    type: "DELETE_CART_FROM_LOCAL",
+    payload: id,
+  });
+};
