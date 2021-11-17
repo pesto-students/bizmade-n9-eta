@@ -27,7 +27,7 @@ function ProductCarousel() {
       style={{ width: "auto" }}
     >
       {products.map((product) => (
-        <Carousel.Item key={product._id}>
+        <Carousel.Item key={product._id} style={{ height: "300px" }}>
           <Link to={`/product/${product._id}`}>
             <img
               className="d-block carousel"
