@@ -87,26 +87,60 @@ export const AddCartReducer = (
   }
 };
 
+// export const cartDetailsReducer = (
+//   state = { loading: true, cartItems: [], shippingAddress: {} },
+//   action
+// ) => {
+//   switch (action.type) {
+//     case CART_DETAILS_REQUEST:
+//       return {
+//         ...state,
+//         loading: true,
+//       };
+//     case CART_DETAILS_SUCCESS:
+//       return {
+//         loading: false,
+//         cartItems: action.payload.cartItems,
+//       };
+//     case CART_DETAILS_FAIL:
+//       return {
+//         loading: false,
+//         error: action.payload,
+//       };
+//     case CART_DETAILS_RESET:
+//       return { cartItems: [] };
+//     default:
+//       return state;
+//   }
+// };
+
 export const cartDetailsReducer = (
   state = { loading: true, cartItems: [], shippingAddress: {} },
   action
 ) => {
   switch (action.type) {
-    case CART_DETAILS_REQUEST:
+    case "GET_CART_REQUEST":
       return {
         ...state,
         loading: true,
       };
-    case CART_DETAILS_SUCCESS:
+    case "GET_CART_SUCCESS":
+      //console.log("cart is");
+      //console.log(action.payload[0].cartItems);
       return {
         loading: false,
-        cartItems: action.payload.cartItems,
+        cartItems: action.payload[0].cartItems,
       };
-    case CART_DETAILS_FAIL:
+    case "GET_CART_FAIL":
       return {
         loading: false,
         error: action.payload,
       };
+    // case "DELETE_CART_REQUEST":
+    //   return {
+    //     ...state,
+    //     cartItems: state.cartItems.filter((x) => x.product !== action.payload),
+    //   };
     case CART_DETAILS_RESET:
       return { cartItems: [] };
     default:

@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-// import cartItems from "../cartItems";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -18,39 +17,37 @@ import {
 } from "../actions/cartActions";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
+import actionsCreator from "../actions/combinedActions";
 
-const Cart = ({ match, location, history }) => {
-  const productId = match.params.id;
-
-  const qty = location.search ? Number(location.search.split("=")[1]) : 1;
-
+const Rawcart = ({ history }) => {
   const dispatch = useDispatch();
 
   const cartDetails = useSelector((state) => state.cart);
-  const addCart = useSelector((state) => state.addCart);
-  const { loading: addCartLoading, success } = addCart;
-  const { cartItems, loading, error } = cartDetails;
+
+  let [cartItems, setCartItems] = useState([]);
+  let loading = cartDetails.loading;
+  let error = cartDetails.error;
+  cartItems = cartDetails.cartItems;
+
+  console.log(cartDetails);
 
   console.log(`Cart : ${cartDetails}`);
-  // const { cartItems } = cart;
 
   useEffect(() => {
-    if (success) {
-      dispatch(getCartDetails());
-    }
-
-    if (productId) {
-      // dispatch(addToCart(productId, qty));
-      dispatch(getCartDetails());
-    }
-    // else {
-    //   dispatch(getCartDetails());
-    // }
-  }, [dispatch, productId, qty, success]);
+    dispatch(actionsCreator("get", "cart")());
+    //dispatch(getCartDetails());
+  }, [dispatch]);
 
   const removeFromCartHandler = (id) => {
-    dispatch(removeFromCart(id));
+    console.log("deletete");
+    dispatch(actionsCreator("delete", "cart", `${id}`)());
+    // dispatch(removeFromCart(id));
     console.log(id);
+    const index = cartItems.findIndex((item) => (item._id = id));
+    console.log("index is ");
+    console.log(index);
+    cartItems.splice(index, 1);
+    setCartItems(() => cartItems);
   };
 
   const checkoutHandler = () => {
@@ -81,7 +78,7 @@ const Cart = ({ match, location, history }) => {
                 ) : (
                   <ListGroup variant="flush">
                     {cartItems.map((item) => (
-                      <ListGroup.Item key={item.product}>
+                      <ListGroup.Item key={item._id}>
                         <Row>
                           <Col md={2}>
                             <Image
@@ -178,4 +175,4 @@ const Cart = ({ match, location, history }) => {
   );
 };
 
-export default Cart;
+export default Rawcart;

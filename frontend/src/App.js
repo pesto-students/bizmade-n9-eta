@@ -16,6 +16,7 @@ import AddProduct from "./screens/AddProduct";
 import ProfilePage from "./screens/ProfilePage";
 import ManufacLandingPage from "./screens/ManufacLandingPage";
 import Cart from "./screens/Cart";
+import Rawcart from "./screens/Rawcart";
 import Wishlist from "./screens/Wishlist";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
@@ -33,6 +34,7 @@ function App() {
             <Route path="/register" component={Register} />
             <Route path="/product/:id" component={ProductScreen} />
             <Route path="/cart/:id?" component={Cart} />
+            <Route path="/rawcart" component={Rawcart} />
             <Route path="/wishlist" component={Wishlist} />
             <Route path="/shipping" component={ShippingScreen} />
             <Route path="/payment" component={PaymentScreen} />

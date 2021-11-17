@@ -39,7 +39,7 @@ function Header() {
                           <i className="far fa-heart"></i> Wishlist
                         </Nav.Link>
                       </LinkContainer>
-                      <LinkContainer to="/cart">
+                      <LinkContainer to="/rawcart">
                         <Nav.Link>
                           <i className="fas fa-shopping-cart"></i> Cart
                         </Nav.Link>
