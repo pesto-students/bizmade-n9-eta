@@ -18,12 +18,13 @@ const getCartItems = asyncHandler(async (req, res) => {
 // @access Private/Admin
 const addToCart = asyncHandler(async (req, res) => {
   const myCart = await Cart.find({ email: req.body.email });
-  // console.log(req.body.email);
+  console.log(req.body.email);
   // console.log(myCart);
-
+  console.log("request ");
+  console.log(req.body);
   if (myCart.length) {
     const data = req.body;
-    // console.log("myCart.cartItems->");
+    console.log("myCart.cartItems->");
     console.log(myCart[0].cartItems);
 
     myCart[0].cartItems.push(req.body.cartItems[0]);
@@ -45,13 +46,19 @@ const addToCart = asyncHandler(async (req, res) => {
 // @access  Private/Admin
 const deleteCartItem = asyncHandler(async (req, res) => {
   console.log("delete end point hit");
-  console.log(req.url);
-
-  const myCart = await Cart.find({ "cartItems._id": req.params.id });
-
-  const index = myCart[0].cartItems.findIndex(
-    (item) => (item._id = req.params.id)
-  );
+  // console.log(req);
+  const myCart = await Cart.find({ email: req.query.email });
+  console.log("my cart is ");
+  console.log(myCart);
+  let cartLength = myCart[0].cartItems.length;
+  let cartItems = myCart[0].cartItems;
+  let index = -1;
+  console.log(cartLength);
+  for (let i = 0; i < cartLength; i++) {
+    if (cartItems[i]._id == req.params.id) {
+      index = i;
+    }
+  }
   console.log(index);
   if (index != -1) {
     myCart[0].cartItems.splice(index, 1);

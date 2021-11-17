@@ -18,6 +18,7 @@ import {
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import actionsCreator from "../actions/combinedActions";
+import { get } from "mongoose";
 
 const Rawcart = ({ history }) => {
   const dispatch = useDispatch();
@@ -33,21 +34,60 @@ const Rawcart = ({ history }) => {
 
   console.log(`Cart : ${cartDetails}`);
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  console.log("user info");
+  console.log(userInfo);
+
   useEffect(() => {
-    dispatch(actionsCreator("get", "cart")());
-    //dispatch(getCartDetails());
+    if (!userInfo) {
+      history.push("/login");
+    } else {
+      let args = {
+        method: "get",
+        apiType: "cart",
+        params: { email: userInfo.email },
+      };
+      dispatch(actionsCreator(args)());
+      //dispatch(getCartDetails());
+      history.push("/rawcart");
+    }
   }, [dispatch]);
 
   const removeFromCartHandler = (id) => {
     console.log("deletete");
-    dispatch(actionsCreator("delete", "cart", `${id}`)());
-    // dispatch(removeFromCart(id));
     console.log(id);
-    const index = cartItems.findIndex((item) => (item._id = id));
+    console.log(cartItems);
+    let cartLength = cartItems.length;
+    let index = -1;
+    console.log(cartLength);
+    for (let i = 0; i < cartLength; i++) {
+      if (cartItems[i]._id == id) {
+        index = i;
+      }
+    }
     console.log("index is ");
     console.log(index);
     cartItems.splice(index, 1);
-    setCartItems(() => cartItems);
+
+    console.log("set state first call");
+    setCartItems(cartItems);
+    console.log("set state second call");
+    setCartItems((cartItems) => {
+      console.log("inside set state");
+      console.log(cartItems);
+      return cartItems;
+    });
+
+    let args = {
+      method: "delete",
+      apiType: "cart",
+      params: { email: userInfo.email },
+      additionalUrl: `${id}`,
+    };
+    dispatch(actionsCreator(args)());
+    // dispatch(removeFromCart(id));
   };
 
   const checkoutHandler = () => {

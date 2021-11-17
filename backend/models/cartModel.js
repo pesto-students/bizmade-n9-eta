@@ -20,7 +20,7 @@ const cartSchema = mongoose.Schema(
         },
         name: { type: String },
         qty: { type: Number },
-        image: { type: String, required: true },
+        image: { type: String },
         minQuantity: { type: Number },
         maxQuantity: { type: Number },
         price: { type: Number },

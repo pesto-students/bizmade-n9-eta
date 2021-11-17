@@ -40,7 +40,7 @@ const Cart = ({ match, location, history }) => {
     }
 
     if (productId) {
-      // dispatch(addToCart(productId, qty));
+      dispatch(addToCart(productId, qty));
       dispatch(getCartDetails());
     }
     // else {

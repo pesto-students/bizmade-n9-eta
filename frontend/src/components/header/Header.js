@@ -40,6 +40,7 @@ function Header() {
                         </Nav.Link>
                       </LinkContainer>
                       <LinkContainer to="/rawcart">
+                        {/* <LinkContainer to="/cart"> */}
                         <Nav.Link>
                           <i className="fas fa-shopping-cart"></i> Cart
                         </Nav.Link>

@@ -22,6 +22,9 @@ import { baseURL } from "../constants/appConstants.js";
 
 export const addToCart = (id, qty) => async (dispatch, getState) => {
   const { data } = await axios.get(`${baseURL}/api/products/${id}`);
+
+  console.log("cart data is");
+  console.log(data);
   dispatch({
     type: CART_ADD_REQUEST,
     payload: {
@@ -48,11 +51,11 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    const cartStuff = await axios.get(`${baseURL}/api/cart`, {
-      params: {
-        email: userInfo.email,
-      },
-    });
+    // const cartStuff = await axios.get(`${baseURL}/api/cart`, {
+    //   params: {
+    //     email: userInfo.email,
+    //   },
+    // });
 
     // console.log(cartStuff);
 
@@ -68,8 +71,8 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
           {
             product: data._id,
             name: data.name,
-            image: data.image,
             qty: Number(qty),
+            image: data.image,
             minQuantity: data.minQuantity,
             maxQuantity: data.maxQuantity,
             price: Number(data.price),
