@@ -17,6 +17,7 @@ import {
 import { PayPalButton } from "react-paypal-button-v2";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
+import { baseURL } from "../constants/appConstants";
 
 const Checkout = ({ match, history }) => {
   const orderId = match.params.id;
@@ -53,7 +54,9 @@ const Checkout = ({ match, history }) => {
       history.push("/login");
     } else {
       const addPayPalScript = async () => {
-        const { data: clientId } = await axios.get("/api/config/paypal");
+        const { data: clientId } = await axios.get(
+          `${baseURL}/api/config/paypal`
+        );
         const script = document.createElement("script");
         script.type = "text/javascript";
         script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
