@@ -12,7 +12,7 @@ import {
   Form,
   OverlayTrigger,
   Tooltip,
-  Button
+  Button,
 } from "react-bootstrap";
 import "../styles.css";
 import tooltip from "./images/tooltip.png";
@@ -20,7 +20,7 @@ import "../styles.css";
 import { Link } from "react-router-dom";
 import Product from "../components/Product";
 import { addToWishlist } from "../actions/wishlistActions";
-import { addToCart } from "../actions/cartActions";
+// import { addToCart } from "../actions/cartActions";
 import { listProductDetails, listAllProducts } from "../actions/productActions";
 import Loader from "../components/Loader";
 import { baseURL } from "../constants/appConstants";
@@ -42,8 +42,8 @@ const ProductScreen = ({ match, history }) => {
   const { userInfo } = userLogin;
 
   const wishlistCreate = useSelector((state) => state.wishlistCreate);
-  const addCart = useSelector((state) => state.addCart);
-  const { loading: addCartLoading, success } = addCart;
+  // const addCart = useSelector((state) => state.addCart);
+  // const { loading: addCartLoading, success } = addCart;
   // const { wishlistItem } = wishlistCreate;
 
   useEffect(() => {
@@ -74,9 +74,7 @@ const ProductScreen = ({ match, history }) => {
     if (!userInfo) {
       history.push("/login");
     } else {
-      // history.push(`/cart/${match.params.id}?qty=${qty}`);
-      dispatch(addToCart(match.params.id, qty));
-      history.push("/cart");
+      history.push(`/cart/${match.params.id}?qty=${qty}`);
     }
   };
 
@@ -89,23 +87,20 @@ const ProductScreen = ({ match, history }) => {
     }
   };
 
-  const renderTooltip = props => (
+  const renderTooltip = (props) => (
     <Tooltip {...props}>Add more quantity to apply discount</Tooltip>
   );
 
- 
   return (
     <Container className="pt-5 container">
       <Row>
         <Col md={6} className="py-md-50">
-          <h3 className="blue align-left"><strong>{product.name}</strong></h3>
+          <h3 className="blue align-left">
+            <strong>{product.name}</strong>
+          </h3>
           <ListGroup>
             <ListGroup.Item>
-              <Image
-                src={product.image}
-                width="auto"
-                height="350"
-              ></Image>
+              <Image src={product.image} width="auto" height="350"></Image>
               {/* <Image
                 src={Heart}
                 className="heart"
@@ -127,7 +122,7 @@ const ProductScreen = ({ match, history }) => {
             <thead className="bg-blue white">
               <tr>
                 <th scope="col">Price</th>
-                <th scope="col">{qty * (product.price)}</th>
+                <th scope="col">{(qty === product.minQuantity) ? product.price : qty * product.price}</th>
               </tr>
             </thead>
             <tbody className="bg-lightblue">
@@ -144,20 +139,25 @@ const ProductScreen = ({ match, history }) => {
                 <td>{150 * qty}</td>
               </tr>
               <tr>
-                <th scope="row" className="grey">Discount{" "}
-                <OverlayTrigger placement="top" overlay={renderTooltip}>
-                  <Image src={tooltip} width="20px" height="20px"></Image>
-                </OverlayTrigger>
+                <th scope="row" className="grey">
+                  Discount{" "}
+                  <OverlayTrigger placement="top" overlay={renderTooltip}>
+                    <Image src={tooltip} width="20px" height="20px"></Image>
+                  </OverlayTrigger>
                 </th>
-                <td colSpan="2">{ (qty > product.minQuantity) ? (qty*300) : 0 }</td>
+                <td colSpan="2">{qty > product.minQuantity ? qty * 300 : 0}</td>
               </tr>
               <tr>
                 <th scope="row" className="grey">
                   Total Price
                 </th>
                 <td colSpan="2" className="font-weight-bold">
-                  {((qty * (product.price)) + (0.18 * qty * product.price) + 
-                  (150 * qty) - ((qty > product.minQuantity) ? (qty*300) : 0 )).toFixed(0)}
+                  {(
+                    qty * product.price +
+                    0.18 * qty * product.price +
+                    150 * qty -
+                    (qty > product.minQuantity ? qty * 300 : 0)
+                  ).toFixed(0)}
                 </td>
               </tr>
               <tr className="table-border">
@@ -216,33 +216,58 @@ const ProductScreen = ({ match, history }) => {
       </p>
       <Row className="p-1">
         <Col md={12}>
-      {category.map((product, index) => index<4 && (
-        
-          <Card
-            style={{ width: "15rem" }}
-            className="float-right pt-4 m-2 shadow"
-            onClick={() =>  window.scrollTo(0, 0,"smooth")}
-          >
-            <Link to={`/product/${product._id}`}>
-            <Card.Img variant="top" src={product.image} />
-            </Link>
-            <Card.Body>
-            <Link to={`/product/${product._id}`}>
-              <Card.Title className="card-title"
-              style={{ color: "#0fafe9", fontSize: "medium", fontWeight: "500" }}>
-                <h4><strong>{product.name}</strong></h4></Card.Title>
-            </Link>
-              <Card.Text
-              style={{ color: "#0fafe9", fontSize: "medium", fontWeight: "500" }} as="h4">
-                <p>{product.manufacturer}</p>
-              </Card.Text>
-              <Card.Text
-              style={{ color: "#3B3B3B", fontSize: "medium", fontWeight: "500" }}
-              as="h3"><strong>&#8377;{product.price}</strong></Card.Text>
-            </Card.Body>
-          </Card>
-      ))};
-       </Col>
+          {category.map(
+            (product, index) =>
+              index < 4 && (
+                <Card
+                  style={{ width: "15rem" }}
+                  className="float-right pt-4 m-2 shadow"
+                  onClick={() => window.scrollTo(0, 0, "smooth")}
+                >
+                  <Link to={`/product/${product._id}`}>
+                    <Card.Img variant="top" src={product.image} />
+                  </Link>
+                  <Card.Body>
+                    <Link to={`/product/${product._id}`}>
+                      <Card.Title
+                        className="card-title"
+                        style={{
+                          color: "#0fafe9",
+                          fontSize: "medium",
+                          fontWeight: "500",
+                        }}
+                      >
+                        <h4>
+                          <strong>{product.name}</strong>
+                        </h4>
+                      </Card.Title>
+                    </Link>
+                    <Card.Text
+                      style={{
+                        color: "#0fafe9",
+                        fontSize: "medium",
+                        fontWeight: "500",
+                      }}
+                      as="h4"
+                    >
+                      <p>{product.manufacturer}</p>
+                    </Card.Text>
+                    <Card.Text
+                      style={{
+                        color: "#3B3B3B",
+                        fontSize: "medium",
+                        fontWeight: "500",
+                      }}
+                      as="h3"
+                    >
+                      <strong>&#8377;{product.price}</strong>
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              )
+          )}
+          ;
+        </Col>
       </Row>
     </Container>
   );

@@ -93,11 +93,7 @@ export const getOrderDetails = (id, userId) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(
-      `${baseURL}/api/orders/${id}`,
-      { user: userId },
-      config
-    );
+    const { data } = await axios.get(`${baseURL}/api/orders/${id}`, config);
 
     dispatch({
       type: ORDER_DETAILS_SUCCESS,
@@ -309,11 +305,11 @@ export const listManufacturerOrders =
       const config = {
         headers: {
           "Content-Type": "application/json",
-          // Authorization: `Bearer ${userInfo.token}`,
+          Authorization: `Bearer ${userInfo.token}`,
         },
       };
       const { data } = await axios.get(
-        `${baseURL}/api/orders/${manufacturer}`,
+        `${baseURL}/api/orders/manufacturer/${manufacturer}`,
         config
       );
 

@@ -97,56 +97,56 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
       payload: message,
     });
   }
-  // localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
+  localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
 };
 
-export const getCartDetails = () => async (dispatch, getState) => {
-  try {
-    dispatch({
-      type: CART_DETAILS_REQUEST,
-    });
+// export const getCartDetails = () => async (dispatch, getState) => {
+//   try {
+//     dispatch({
+//       type: CART_DETAILS_REQUEST,
+//     });
 
-    const {
-      userLogin: { userInfo },
-    } = getState();
+//     const {
+//       userLogin: { userInfo },
+//     } = getState();
 
-    const config = {
-      headers: {
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    };
+//     const config = {
+//       headers: {
+//         Authorization: `Bearer ${userInfo.token}`,
+//       },
+//     };
 
-    const { data } = await axios.get(
-      `${baseURL}/api/cart/`,
-      {
-        params: {
-          email: userInfo.email,
-        },
-      },
-      config
-    );
-    console.log(`Payload ${data}`);
+//     const { data } = await axios.get(
+//       `${baseURL}/api/cart/`,
+//       {
+//         params: {
+//           email: userInfo.email,
+//         },
+//       },
+//       config
+//     );
+//     console.log(`Payload ${data}`);
 
-    dispatch({
-      type: CART_DETAILS_SUCCESS,
-      payload: data[0],
-    });
-  } catch (error) {
-    const message =
-      error.response && error.response.data.message
-        ? error.response.data.message
-        : error.message;
+//     dispatch({
+//       type: CART_DETAILS_SUCCESS,
+//       payload: data[0],
+//     });
+//   } catch (error) {
+//     const message =
+//       error.response && error.response.data.message
+//         ? error.response.data.message
+//         : error.message;
 
-    if (message === "Not authorized, token failed") {
-      dispatch(logout());
-    }
+//     if (message === "Not authorized, token failed") {
+//       dispatch(logout());
+//     }
 
-    dispatch({
-      type: CART_DETAILS_FAIL,
-      payload: message,
-    });
-  }
-};
+//     dispatch({
+//       type: CART_DETAILS_FAIL,
+//       payload: message,
+//     });
+//   }
+// };
 
 // export const getMyCart = (email) => {
 

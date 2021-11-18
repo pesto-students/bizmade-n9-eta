@@ -62,6 +62,11 @@ const Login = ({ location, history }) => {
         <Button style={{ margin: "20px 0" }} type="submit" variant="primary">
           SIGN IN
         </Button>
+        <p>
+          Test Credentials for testing (Email/Password)<br></br> Dealer :
+          dealer1@example.com/123456<br></br>Manufacturer :
+          manufacturer@example.com/123456
+        </p>
       </Form>
 
       <Row>
