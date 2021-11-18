@@ -84,7 +84,10 @@ const AddProduct = ({ history }) => {
         config
       );
 
-      setImage(data);
+      console.log(
+        `Image : ${data.toString().slice(16, data.toString().length)}`
+      );
+      setImage(data.toString().slice(16, data.toString().length));
       setUploading(false);
     } catch (error) {
       console.log(error);
