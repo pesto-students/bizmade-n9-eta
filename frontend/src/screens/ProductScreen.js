@@ -92,7 +92,9 @@ const ProductScreen = ({ match, history }) => {
   );
 
   return (
-    <Container className="pt-5 container">
+    <Container className="pt-5 container"
+    onLoad={() => window.scrollTo(0, 0, "smooth")}
+    >
       <Row>
         <Col md={6} className="py-md-50">
           <h3 className="blue align-left">
