@@ -235,6 +235,10 @@ const Checkout = ({ match, history }) => {
                 )}
             </ListGroup>
           </Card>
+          <p>
+            PAYPAL CREDENTIALS<br></br>
+            sb-p2z47f8428303@personal.example.com/ .*qMb47X
+          </p>
         </Col>
       </Row>
     </>
