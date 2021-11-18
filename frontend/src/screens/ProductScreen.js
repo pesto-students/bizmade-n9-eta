@@ -122,7 +122,7 @@ const ProductScreen = ({ match, history }) => {
             <thead className="bg-blue white">
               <tr>
                 <th scope="col">Price</th>
-                <th scope="col">{qty * product.price}</th>
+                <th scope="col">{(qty === product.minQuantity) ? product.price : qty * product.price}</th>
               </tr>
             </thead>
             <tbody className="bg-lightblue">
@@ -274,3 +274,4 @@ const ProductScreen = ({ match, history }) => {
 };
 
 export default ProductScreen;
+
