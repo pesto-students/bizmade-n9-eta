@@ -6,12 +6,12 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { listProducts, deleteProduct } from "../actions/productActions";
+import { deleteProduct } from "../actions/productActions";
 
 const ManufacLandingPage = ({ products, manufacturer, history }) => {
   const dispatch = useDispatch();
-  const productList = useSelector((state) => state.productList);
-  const { loading, error, product } = productList;
+  // const productList = useSelector((state) => state.productList);
+  // const { loading, error, product } = productList;
   const productDelete = useSelector((state) => state.productDelete);
 
   const {

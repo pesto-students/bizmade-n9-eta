@@ -12,7 +12,7 @@ const PlaceOrderScreen = ({ history }) => {
   const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
-  const user = useSelector((state) => state.userLogin);
+  // const user = useSelector((state) => state.userLogin);
 
   if (!cart.shippingAddress.address) {
     history.push("/shipping");

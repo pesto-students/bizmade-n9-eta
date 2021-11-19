@@ -9,26 +9,21 @@ import {
   Container,
   ListGroup,
   Card,
-  Form,
   OverlayTrigger,
   Tooltip,
-  Button,
 } from "react-bootstrap";
 import "../styles.css";
 import tooltip from "./images/tooltip.png";
 import "../styles.css";
 import { Link } from "react-router-dom";
-import Product from "../components/Product";
 import { addToWishlist } from "../actions/wishlistActions";
-// import { addToCart } from "../actions/cartActions";
 import { listProductDetails, listAllProducts } from "../actions/productActions";
-import Loader from "../components/Loader";
 import { baseURL } from "../constants/appConstants";
 
 const ProductScreen = ({ match, history }) => {
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
-  const { loading, error, product } = productDetails;
+  const { product } = productDetails;
 
   const productAllList = useSelector((state) => state.productAllList);
   const { productslist } = productAllList;
@@ -41,7 +36,7 @@ const ProductScreen = ({ match, history }) => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  const wishlistCreate = useSelector((state) => state.wishlistCreate);
+  // const wishlistCreate = useSelector((state) => state.wishlistCreate);
   // const addCart = useSelector((state) => state.addCart);
   // const { loading: addCartLoading, success } = addCart;
   // const { wishlistItem } = wishlistCreate;
