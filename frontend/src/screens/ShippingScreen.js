@@ -30,7 +30,7 @@ const ShippingScreen = ({ history }) => {
   );
 
   const calculateDiscount = (item) =>
-    item.qty > item.minQuantity ? item.price * 0.1 : 0;
+    item.qty > item.minQuantity ? item.qty * 300 : 0;
 
   const [totalDiscount, setTotalDiscount] = useState(
     cart.cartItems

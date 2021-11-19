@@ -149,9 +149,7 @@ const ProductScreen = ({ match, history }) => {
                     <Image src={tooltip} width="20px" height="20px"></Image>
                   </OverlayTrigger>
                 </th>
-                <td colSpan="2">
-                  {qty > product.minQuantity ? product.price * 0.1 : 0}
-                </td>
+                <td colSpan="2">{qty > product.minQuantity ? qty * 300 : 0}</td>
               </tr>
               <tr>
                 <th scope="row" className="grey">
