@@ -28,12 +28,32 @@ const ShippingScreen = ({ history }) => {
   cart.itemsPrice = addDecimals(
     cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
   );
+
+  const calculateDiscount = (item) =>
+    item.qty > item.minQuantity ? item.qty * 300 : 0;
+
+  const [totalDiscount, setTotalDiscount] = useState(
+    cart.cartItems
+      .map((item) => calculateDiscount(item))
+      .reduce((accumulator, curr) => accumulator + curr)
+  );
+
   cart.shippingPrice = addDecimals(cart.itemsPrice > 100 ? 0 : 100);
   cart.taxPrice = addDecimals(Number((0.15 * cart.itemsPrice).toFixed(2)));
+
+  const calculateDiscount = (item) =>
+    item.qty > item.minQuantity ? item.qty * 300 : 0;
+  const [totalDiscount, setTotalDiscount] = useState(
+    cart.cartItems
+      .map((item) => calculateDiscount(item))
+      .reduce((accumulator, curr) => accumulator + curr)
+  );
+
   cart.totalPrice = (
     Number(cart.itemsPrice) +
     Number(cart.shippingPrice) +
-    Number(cart.taxPrice)
+    Number(cart.taxPrice) -
+    Number(totalDiscount)
   ).toFixed(2);
   const [paymentMethod, setPaymentMethod] = useState("");
 
@@ -212,6 +232,23 @@ const ShippingScreen = ({ history }) => {
                       <td>{`Qty: ${item.qty}`}</td>
                     </tr>
                   ))}
+                  <tr className="bg-lightblue p-5">
+                    <td>Items Price</td>
+                    <td className="fw-bold">{cart.itemsPrice}</td>
+                  </tr>
+
+                  <tr className="bg-lightblue p-5">
+                    <td>Shipping Price</td>
+                    <td className="fw-bold">{cart.shippingPrice}</td>
+                  </tr>
+                  <tr className="bg-lightblue p-5">
+                    <td>Tax Price</td>
+                    <td className="fw-bold">{cart.taxPrice}</td>
+                  </tr>
+                  <tr className="bg-lightblue p-5">
+                    <td>Discount</td>
+                    <td className="fw-bold">{totalDiscount}</td>
+                  </tr>
 
                   <tr className="bg-lightblue p-5">
                     <td>Total</td>
