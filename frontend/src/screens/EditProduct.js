@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import { useDispatch, useSelector } from "react-redux";
+import Resizer from "react-image-file-resizer";
 import { listProductDetails, updateProduct } from "../actions/productActions";
 import { PRODUCT_UPDATE_RESET } from "../constants/productConstants";
 import { baseURL } from "../constants/appConstants";
@@ -57,32 +58,69 @@ const EditProduct = ({ match, history }) => {
     }
   }, [dispatch, history, productId, product, successUpdate]);
 
+  const resizeFile = (file) =>
+    new Promise((resolve) => {
+      Resizer.imageFileResizer(
+        file,
+        300,
+        300,
+        "JPEG",
+        100,
+        0,
+        (uri) => {
+          resolve(uri);
+        },
+        "file"
+      );
+    });
+
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
-    const formData = new FormData();
-    formData.append("image", file);
+    const image = await resizeFile(file);
     setUploading(true);
-
-    try {
-      const config = {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      };
-
-      const { data } = await axios.post(
-        `${baseURL}/api/upload`,
-        formData,
-        config
-      );
-
-      setImage(data);
-      setUploading(false);
-    } catch (error) {
-      console.log(error);
-      setUploading(false);
+    if (image == null) {
+      return alert("No file selected.");
     }
+    getSignedRequest(image);
   };
+
+  function getSignedRequest(file) {
+    const xhr = new XMLHttpRequest();
+    xhr.open(
+      "GET",
+      `${baseURL}/sign-s3?file-name=${file.name}&file-type=${file.type}`
+    );
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          console.log(xhr);
+          const response = JSON.parse(xhr.responseText);
+          uploadFile(file, response.signedRequest, response.url);
+        } else {
+          alert("Could not get signed URL.");
+          setUploading(false);
+        }
+      }
+    };
+    xhr.send();
+  }
+
+  function uploadFile(file, signedRequest, url) {
+    const xhr = new XMLHttpRequest();
+    xhr.open("PUT", signedRequest);
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          setImage(url);
+          setUploading(false);
+        } else {
+          alert("Could not upload file.");
+          setUploading(false);
+        }
+      }
+    };
+    xhr.send(file);
+  }
 
   const submitHandler = (e) => {
     e.preventDefault();

@@ -28,6 +28,16 @@ const ShippingScreen = ({ history }) => {
   cart.itemsPrice = addDecimals(
     cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
   );
+
+  const calculateDiscount = (item) =>
+    item.qty > item.minQuantity ? item.qty * 300 : 0;
+
+  const [totalDiscount, setTotalDiscount] = useState(
+    cart.cartItems
+      .map((item) => calculateDiscount(item))
+      .reduce((accumulator, curr) => accumulator + curr)
+  );
+
   cart.shippingPrice = addDecimals(cart.itemsPrice > 100 ? 0 : 100);
   cart.taxPrice = addDecimals(Number((0.15 * cart.itemsPrice).toFixed(2)));
 
