@@ -66,31 +66,50 @@ const AddProduct = ({ history }) => {
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
     const image = await resizeFile(file);
-    const formData = new FormData();
-    // console.log(image);
-    formData.append("image", image);
     setUploading(true);
-
-    try {
-      const config = {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      };
-
-      const { data } = await axios.post(
-        `${baseURL}/api/upload`,
-        formData,
-        config
-      );
-
-      setImage(data);
-      setUploading(false);
-    } catch (error) {
-      console.log(error);
-      setUploading(false);
+    if (image == null) {
+      return alert("No file selected.");
     }
+    getSignedRequest(image);
   };
+
+  function getSignedRequest(file) {
+    const xhr = new XMLHttpRequest();
+    xhr.open(
+      "GET",
+      `${baseURL}/sign-s3?file-name=${file.name}&file-type=${file.type}`
+    );
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          console.log(xhr);
+          const response = JSON.parse(xhr.responseText);
+          uploadFile(file, response.signedRequest, response.url);
+        } else {
+          alert("Could not get signed URL.");
+          setUploading(false);
+        }
+      }
+    };
+    xhr.send();
+  }
+
+  function uploadFile(file, signedRequest, url) {
+    const xhr = new XMLHttpRequest();
+    xhr.open("PUT", signedRequest);
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          setImage(url);
+          setUploading(false);
+        } else {
+          alert("Could not upload file.");
+          setUploading(false);
+        }
+      }
+    };
+    xhr.send(file);
+  }
 
   const createProductHandler = (e) => {
     e.preventDefault();
