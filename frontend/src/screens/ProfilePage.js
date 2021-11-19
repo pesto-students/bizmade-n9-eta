@@ -82,24 +82,6 @@ const ProfilePage = ({ location, history }) => {
                     cols={2}
                   />
                 </Form.Group>
-                {/* <Form.Group
-                  className="mb-1"
-                  controlId="exampleForm.ControlTextarea1"
-                >
-                  <Form.Label className="float-start fw-bold">
-                    Last Name
-                  </Form.Label>
-                  <Form.Control as="textarea" rows={1} cols={2} />
-                </Form.Group>
-                <Form.Group
-                  className="mb-1"
-                  controlId="exampleForm.ControlTextarea1"
-                >
-                  <Form.Label className="float-start fw-bold">
-                    Display Name
-                  </Form.Label>
-                  <Form.Control as="textarea" rows={1} cols={2} />
-                </Form.Group> */}
                 <Form.Group
                   className="mb-1"
                   controlId="exampleForm.ControlTextarea1"
