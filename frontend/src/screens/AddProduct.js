@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import "../styles.css";
+import path from "path";
 import { Container, Button, Form, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -63,14 +64,30 @@ const AddProduct = ({ history }) => {
       );
     });
 
+  function checkFileType(file) {
+    let fileName = file.name.toString().toLowerCase();
+    console.log(fileName);
+    const regex = new RegExp("(.*?).(png|jpg|jpeg)$");
+    if (!regex.test(fileName)) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
-    const image = await resizeFile(file);
-    setUploading(true);
-    if (image == null) {
-      return alert("No file selected.");
+    const fileType = checkFileType(file);
+    if (fileType) {
+      const image = await resizeFile(file);
+      setUploading(true);
+      if (image == null) {
+        return alert("No file selected.");
+      }
+      getSignedRequest(image);
+    } else {
+      alert("Upload Images only");
     }
-    getSignedRequest(image);
   };
 
   function getSignedRequest(file) {
