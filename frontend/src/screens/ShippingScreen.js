@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../styles.css";
-import { Container, Row, Col, Table, Image } from "react-bootstrap";
+import { Container, Row, Col, Table } from "react-bootstrap";
 import FormContainer from "../components/FormContainer";
 import { Link } from "react-router-dom";
 import { savePaymentMethod } from "../actions/cartActions";
@@ -15,7 +15,7 @@ import { USER_DETAILS_RESET } from "../constants/userConstants";
 
 const ShippingScreen = ({ history }) => {
   const cart = useSelector((state) => state.cart);
-  const { cartItems, shippingAddress } = cart;
+  const { shippingAddress } = cart;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -44,7 +44,6 @@ const ShippingScreen = ({ history }) => {
     Number(cart.taxPrice) -
     Number(totalDiscount)
   ).toFixed(2);
-  const [paymentMethod, setPaymentMethod] = useState("");
 
   const [firstName, setFirstName] = useState(shippingAddress.firstName);
   const [lastName, setLastname] = useState(shippingAddress.lastName);
@@ -57,7 +56,7 @@ const ShippingScreen = ({ history }) => {
 
   const dispatch = useDispatch();
   const orderCreate = useSelector((state) => state.orderCreate);
-  const { order, success, error } = orderCreate;
+  const { order, success } = orderCreate;
 
   useEffect(() => {
     if (success) {

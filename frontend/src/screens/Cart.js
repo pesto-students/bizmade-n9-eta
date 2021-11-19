@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-// import cartItems from "../cartItems";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -123,7 +122,6 @@ const Cart = ({ match, location, history }) => {
                 .reduce((acc, item) => acc + item.qty * item.price, 0)
                 .toFixed(2)}
             </ListGroup.Item>
-            {/* <Link to="/payment"> */}
             <ListGroup.Item>
               <Button
                 type="button"
@@ -134,7 +132,6 @@ const Cart = ({ match, location, history }) => {
                 Proceed To Checkout
               </Button>
             </ListGroup.Item>
-            {/* </Link> */}
           </ListGroup>
         </Card>
       </Col>

@@ -1,7 +1,5 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import "../styles.css";
-import path from "path";
 import { Container, Button, Form, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,7 +14,6 @@ const AddProduct = ({ history }) => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [image, setImage] = useState("");
-  const [manufacturer, setManufacturer] = useState("");
   const [category, setCategory] = useState("");
   const [countInStock, setCountInStock] = useState(0);
   const [description, setDescription] = useState("");

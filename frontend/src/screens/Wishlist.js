@@ -1,5 +1,4 @@
 import React from "react";
-import cartItems from "../cartItems";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, ListGroup, Image, Form, Button } from "react-bootstrap";
