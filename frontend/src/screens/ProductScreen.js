@@ -122,7 +122,11 @@ const ProductScreen = ({ match, history }) => {
             <thead className="bg-blue white">
               <tr>
                 <th scope="col">Price</th>
-                <th scope="col">{(qty === product.minQuantity) ? product.price : qty * product.price}</th>
+                <th scope="col">
+                  {qty === product.minQuantity
+                    ? product.price
+                    : qty * product.price}
+                </th>
               </tr>
             </thead>
             <tbody className="bg-lightblue">
@@ -145,7 +149,9 @@ const ProductScreen = ({ match, history }) => {
                     <Image src={tooltip} width="20px" height="20px"></Image>
                   </OverlayTrigger>
                 </th>
-                <td colSpan="2">{qty > product.minQuantity ? qty * 300 : 0}</td>
+                <td colSpan="2">
+                  {qty > product.minQuantity ? product.price * 0.1 : 0}
+                </td>
               </tr>
               <tr>
                 <th scope="row" className="grey">
@@ -274,4 +280,3 @@ const ProductScreen = ({ match, history }) => {
 };
 
 export default ProductScreen;
-
