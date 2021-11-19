@@ -28,7 +28,16 @@ function Header() {
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Route render={({ history }) => <Search history={history} />} />
+            {userInfo ? (
+              userInfo.isManufacturer ? (
+                <></>
+              ) : (
+                <Route render={({ history }) => <Search history={history} />} />
+              )
+            ) : (
+              <Route render={({ history }) => <Search history={history} />} />
+            )}
+
             <Nav className="nav-links">
               {userInfo ? (
                 <div className="d-flex">
