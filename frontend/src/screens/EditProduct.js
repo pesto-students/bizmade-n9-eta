@@ -143,7 +143,7 @@ const EditProduct = ({ match, history }) => {
   return (
     <div>
       <Container>
-        <h2 className="p-4">Edit Product Details</h2>
+        <h2 className="p-4 fw-bold">Edit Product Details</h2>
         {loadingUpdate && <Loader />}
         {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
         {loading ? (

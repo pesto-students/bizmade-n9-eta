@@ -27,7 +27,7 @@ function Header() {
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
+          <Navbar.Collapse id="basic-navbar-nav" className="pt-3">
             <Route render={({ history }) => <Search history={history} />} />
             <Nav className="nav-links">
               {userInfo ? (

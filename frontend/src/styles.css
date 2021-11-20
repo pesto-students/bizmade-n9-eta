@@ -1,9 +1,14 @@
+.container {
+  width: 100%;
+  max-width: 1200px;
+}
+
 .blue {
   color: #0fafe9;
 }
 
 .bg-blue {
-  background-color: #0fafe9;
+  background-color: #00BFFF;
 }
 
 .bg-lightblue {
@@ -87,7 +92,10 @@ button:hover {
 .card-title {
   font-size: 20px;
   overflow: hidden;
-  height: 30px;
+  height: 25px;
+  color: #0fafe9;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .carousel {
@@ -96,4 +104,14 @@ button:hover {
   margin: auto;
   object-fit: auto;
   overflow: auto;
+}
+
+.card-text {
+  color: #0fafe9;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.card-text-price {
+  color: black;
 }

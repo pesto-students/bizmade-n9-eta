@@ -16,7 +16,6 @@ import {
 } from "react-bootstrap";
 import "../styles.css";
 import tooltip from "./images/tooltip.png";
-import "../styles.css";
 import { Link } from "react-router-dom";
 import Product from "../components/Product";
 import { addToWishlist } from "../actions/wishlistActions";
@@ -100,7 +99,7 @@ const ProductScreen = ({ match, history }) => {
           </h3>
           <ListGroup>
             <ListGroup.Item>
-              <Image src={product.image} width="auto" height="350"></Image>
+              <Image src={product.image} width="100%" height="auto" className="img-fluid"></Image>
               {/* <Image
                 src={Heart}
                 className="heart"
@@ -165,10 +164,10 @@ const ProductScreen = ({ match, history }) => {
                 </td>
               </tr>
               <tr className="table-border">
-                <td colSpan="4">
+                <td colSpan="6">
                   <span className="grey font-weight-bold">Quantity :</span>
                   <button
-                    className="m-2"
+                    className="m-2 btn-sm"
                     onClick={() => {
                       setQty(qty - 1);
                     }}
@@ -178,7 +177,7 @@ const ProductScreen = ({ match, history }) => {
                   </button>
                   <span>{qty}</span>
                   <button
-                    className="m-2"
+                    className="m-2 btn-sm"
                     onClick={() => {
                       setQty(qty + 1);
                     }}
@@ -218,7 +217,7 @@ const ProductScreen = ({ match, history }) => {
       <p className="pt-5">
         <strong>Related Products</strong>
       </p>
-      <Row className="p-1">
+      <Row className="p-1 row align-content-center m-3">
         <Col md={12}>
           {category.map(
             (product, index) =>
@@ -233,37 +232,16 @@ const ProductScreen = ({ match, history }) => {
                   </Link>
                   <Card.Body>
                     <Link to={`/product/${product._id}`}>
-                      <Card.Title
-                        className="card-title"
-                        style={{
-                          color: "#0fafe9",
-                          fontSize: "medium",
-                          fontWeight: "500",
-                        }}
-                      >
+                      <Card.Title className="card-title">
                         <h4>
                           <strong>{product.name}</strong>
                         </h4>
                       </Card.Title>
                     </Link>
-                    <Card.Text
-                      style={{
-                        color: "#0fafe9",
-                        fontSize: "medium",
-                        fontWeight: "500",
-                      }}
-                      as="h4"
-                    >
+                    <Card.Text className="card-text" as="h4">
                       <p>{product.manufacturer}</p>
                     </Card.Text>
-                    <Card.Text
-                      style={{
-                        color: "#3B3B3B",
-                        fontSize: "medium",
-                        fontWeight: "500",
-                      }}
-                      as="h3"
-                    >
+                    <Card.Text as="h3" className="card-text-price">
                       <strong>&#8377;{product.price}</strong>
                     </Card.Text>
                   </Card.Body>

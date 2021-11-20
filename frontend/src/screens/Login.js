@@ -31,7 +31,7 @@ const Login = ({ location, history }) => {
 
   return (
     <FormContainer>
-      <h2 style={{ color: "#0fafe9", textAlign: "initial" }}>Sign In</h2>
+      <h2 className="fw-bold blue" style={{ textAlign: "initial" }}>Sign In</h2>
       {error && <Message variant="danger">{error}</Message>}
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
@@ -71,7 +71,7 @@ const Login = ({ location, history }) => {
 
       <Row>
         <Col>
-          New User? <Link to="/register">Register</Link>
+          New User? <Link className="blue" to="/register">Register</Link>
         </Col>
       </Row>
     </FormContainer>

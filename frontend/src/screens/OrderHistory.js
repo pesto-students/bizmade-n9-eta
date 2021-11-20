@@ -43,7 +43,7 @@ const OrderHistory = ({ history, match }) => {
   return (
     <div>
       <>
-        <h3>{userInfo.name}'s Orders</h3>
+        <h3 className="m-3 fw-bold">{userInfo.name}'s Orders</h3>
         {/* <p>{userInfo._id}</p> */}
         {loadingOrders || loadingOrdersStatus ? (
           <Loader />
@@ -53,7 +53,7 @@ const OrderHistory = ({ history, match }) => {
           <>
             {!userInfo.isManufacturer ? (
               <Table striped bordered hover responsive className="table-sm">
-                <thead>
+                <thead className="bg-blue white">
                   <tr>
                     <th>ORDER ID</th>
                     <th>PRODUCT</th>
@@ -94,7 +94,7 @@ const OrderHistory = ({ history, match }) => {
               </Table>
             ) : (
               <Table striped bordered hover responsive className="table-sm">
-                <thead>
+                <thead className="bg-blue white">
                   <tr>
                     <th>ORDER ID</th>
                     <th>PRODUCT</th>

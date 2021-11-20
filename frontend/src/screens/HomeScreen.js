@@ -112,7 +112,7 @@ function HomeScreen({ match, history }) {
               <>
                 <Row>
                   <Col md={3}>
-                    <div id="homepage-container">
+                    <div id="homepage-container" className="container">
                       <div className="carousal"></div>
                       <div className="products-list"></div>
                       <div className="filter">
@@ -179,7 +179,7 @@ function HomeScreen({ match, history }) {
                           data-value="beauty"
                           onClick={(e) => categoryHandler(e)}
                         >
-                          Beauty and Personal care
+                          Beauty & Personal care
                         </div>
                         
                       </div>

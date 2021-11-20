@@ -144,8 +144,8 @@ const ShippingScreen = ({ history }) => {
     <div>
       <Container>
         <Row>
-          <Col md={6}>
-            <p className="fw-bold">Billing Address</p>
+          <Col md={6} className="m-4">
+            <h4 className="fw-bold blue">Billing Address</h4>
             <form>
               <input
                 className="firstname col-md-12 m-1"
@@ -208,14 +208,14 @@ const ShippingScreen = ({ history }) => {
               Continue
             </Button> */}
           </Col>
-          <Col md={6}>
+          <Col md={5} className="m-4">
             <Row>
-              <p className="fw-bold">Your Orders</p>
+              <h4 className="fw-bold blue">Your Orders</h4>
 
               <Table className="table-bordered">
                 <tbody>
                   {cart.cartItems.map((item, index) => (
-                    <tr className="no-border p-5">
+                    <tr className="no-border p-3 bg-blue white fw-bold">
                       <td>
                         {/* <Image src={item.image} /> */}
                         {item.name}
@@ -223,29 +223,29 @@ const ShippingScreen = ({ history }) => {
                       <td>{`Qty: ${item.qty}`}</td>
                     </tr>
                   ))}
-                  <tr className="bg-lightblue p-5">
+                  <tr className="bg-lightblue p-3">
                     <td>Items Price</td>
                     <td className="fw-bold">{cart.itemsPrice}</td>
                   </tr>
 
-                  <tr className="bg-lightblue p-5">
+                  <tr className="bg-lightblue p-3">
                     <td>Shipping Price</td>
                     <td className="fw-bold">{cart.shippingPrice}</td>
                   </tr>
-                  <tr className="bg-lightblue p-5">
+                  <tr className="bg-lightblue p-3">
                     <td>Tax Price</td>
                     <td className="fw-bold">{cart.taxPrice}</td>
                   </tr>
-                  <tr className="bg-lightblue p-5">
+                  <tr className="bg-lightblue p-3">
                     <td>Discount</td>
                     <td className="fw-bold">{totalDiscount}</td>
                   </tr>
 
-                  <tr className="bg-lightblue p-5">
+                  <tr className="bg-lightblue p-3">
                     <td>Total</td>
                     <td className="fw-bold">{cart.totalPrice}</td>
                   </tr>
-                  <tr className="bg-lightblue p-5">
+                  <tr className="bg-lightblue p-3">
                     <td colspan="2"></td>
                   </tr>
                 </tbody>
@@ -253,7 +253,7 @@ const ShippingScreen = ({ history }) => {
             </Row>
             <Row>
               <FormContainer>
-                <p className="fw-bold">Payment Method</p>
+                <h4 className="fw-bold blue m-2">Payment Method</h4>
                 <Form>
                   <Form.Group>
                     <Col>
@@ -281,7 +281,7 @@ const ShippingScreen = ({ history }) => {
           </Col>
         </Row>
         <Row>
-          <Col md={12} style={{ marginTop: "30px" }}>
+          <Col md={12} className="m-2">
             <Link to="/cart">
               <Button>Go Back</Button>
             </Link>

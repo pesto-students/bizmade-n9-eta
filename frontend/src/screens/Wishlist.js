@@ -1,5 +1,6 @@
 import React from "react";
 import cartItems from "../cartItems";
+import "../styles.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, ListGroup, Image, Form, Button } from "react-bootstrap";
@@ -23,7 +24,7 @@ const Wishlist = ({ history }) => {
   return (
     <Row>
       <Col md={12}>
-        <h2 style={{ textAlign: "left", marginBottom: "30px" }}>Wishlist</h2>
+        <h2 className="fw-bold m-3 blue" style={{ textAlign: "left"}}>Wishlist</h2>
         {wishlistItems.length === 0 ? (
           <>
             <h3>Your Wishlist is empty </h3>
@@ -36,14 +37,14 @@ const Wishlist = ({ history }) => {
             {wishlistItems.map((item) => (
               <ListGroup.Item key={item.product}>
                 <Row>
-                  <Col md={2}>
+                  <Col md={2} className="m-1">
                     <Image src={item.image} alt={item.name} fluid rounded />
                   </Col>
-                  <Col md={3}>
-                    <Link to={`/product/${item.product}`}>{item.name}</Link>
+                  <Col md={2} className="m-1">
+                    <Link className="blue" to={`/product/${item.product}`}>{item.name}</Link>
                   </Col>
-                  <Col md={2}>&#8377;{item.price}</Col>
-                  <Col md={1}>
+                  <Col md={2} className="m-1">&#8377;{item.price}</Col>
+                  <Col md={1} className="m-1">
                     <Form.Control as="select" value={item.qty}>
                       {[
                         ...Array(
@@ -59,7 +60,7 @@ const Wishlist = ({ history }) => {
                       ))}
                     </Form.Control>
                   </Col>
-                  <Col md={2}>
+                  <Col md={2} className="m-1">
                     <Button
                       type="button"
                       variant="primary"
@@ -69,7 +70,7 @@ const Wishlist = ({ history }) => {
                       ADD TO CART
                     </Button>
                   </Col>
-                  <Col md={2}>
+                  <Col md={2} className="m-1">
                     <Button
                       type="button"
                       variant="primary"

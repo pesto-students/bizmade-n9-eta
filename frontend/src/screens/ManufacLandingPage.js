@@ -38,7 +38,7 @@ const ManufacLandingPage = ({ products, manufacturer, history }) => {
         {errorDelete && <Message variant="danger">{errorDelete}</Message>}
         <Row>
           <Col md={12} className="p-4">
-            <h2 className="float-start">{`Welcome ${manufacturer}`}</h2>
+            <h2 className="float-start fw-bold">{`Welcome ${manufacturer}`}</h2>
             <Link to="/addproduct">
               <Button className="float-end">ADD PRODUCT</Button>
             </Link>

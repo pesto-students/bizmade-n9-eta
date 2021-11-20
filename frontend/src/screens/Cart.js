@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-// import cartItems from "../cartItems";
+import "../styles.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -38,9 +38,9 @@ const Cart = ({ match, location, history }) => {
   };
 
   return (
-    <Row>
+    <Row className="m-4">
       <Col md={8}>
-        <h2 style={{ textAlign: "left", marginBottom: "30px" }}>
+        <h2 className="fw-bold" style={{ textAlign: "left", marginBottom: "30px" }}>
           Dealer's Cart
         </h2>
         {cartItems.length === 0 ? (
@@ -54,14 +54,14 @@ const Cart = ({ match, location, history }) => {
           <ListGroup variant="flush">
             {cartItems.map((item) => (
               <ListGroup.Item key={item.product}>
-                <Row>
-                  <Col md={2}>
+                <Row className="m-2">
+                  <Col md={2} className="m-2">
                     <Image src={item.image} alt={item.name} fluid rounded />
                   </Col>
-                  <Col md={3}>
-                    <Link to={`/product/${item.product}`}>{item.name}</Link>
+                  <Col md={3} className="m-2">
+                    <Link className="blue" to={`/product/${item.product}`}>{item.name}</Link>
                   </Col>
-                  <Col md={2}>
+                  <Col md={2} className="m-2">
                     &#8377;
                     {(
                       qty * item.price +
@@ -70,7 +70,7 @@ const Cart = ({ match, location, history }) => {
                       (qty > item.minQuantity ? qty * 300 : 0)
                     ).toFixed(0)}
                   </Col>
-                  <Col md={2}>
+                  <Col md={2} className="m-2">
                     <Form.Control
                       as="select"
                       value={item.qty}
@@ -94,13 +94,12 @@ const Cart = ({ match, location, history }) => {
                       ))}
                     </Form.Control>
                   </Col>
-                  <Col md={2}>
+                  <Col md={1} className="m-2">
                     <Button
                       type="button"
                       variant="primary"
                       onClick={() => removeFromCartHandler(item.product)}
                     >
-                      {/* <i className="fas fa-trash"></i> */}
                       DELETE
                     </Button>
                   </Col>
@@ -110,7 +109,7 @@ const Cart = ({ match, location, history }) => {
           </ListGroup>
         )}
       </Col>
-      <Col md={4}>
+      <Col md={3} className="m-2">
         <Card>
           <ListGroup variant="flush">
             <ListGroup.Item>

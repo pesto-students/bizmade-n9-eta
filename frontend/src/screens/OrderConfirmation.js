@@ -21,18 +21,18 @@ const OrderConfirmation = ({ match, history }) => {
   return (
     <div>
       <Container>
-        <h2 className="p-5">Thank You. Your order has been placed</h2>
+        <h2 className="p-5 blue">Thank You. Your order has been placed</h2>
         <Row>
           <Col md={4}>
-            <p className="fw-bold">Order Number</p>
+            <p className="fw-bold blue">Order Number</p>
             <p>{orderId}</p>
           </Col>
           <Col md={4}>
-            <p className="fw-bold">Date</p>
+            <p className="fw-bold blue">Date</p>
             <p>{date}</p>
           </Col>
           <Col md={4}>
-            <p className="fw-bold">Payment Status</p>
+            <p className="fw-bold blue">Payment Status</p>
             <p>Paid</p>
           </Col>
         </Row>
@@ -85,12 +85,12 @@ const OrderConfirmation = ({ match, history }) => {
           </Table>
         </Row> */}
         <Row>
-          <Col md={12} style={{ marginTop: "30px" }}>
+          <Col md={12}>
             <Link to="/">
-              <Button>Continue Shopping</Button>
+              <Button className="p-3 m-2">Continue Shopping</Button>
             </Link>
             <Link to={`/orders/${userInfo._id}`}>
-              <Button type="submit" variant="primary">
+              <Button  className="p-3 m-2" type="submit" variant="primary">
                 My Orders
               </Button>
             </Link>

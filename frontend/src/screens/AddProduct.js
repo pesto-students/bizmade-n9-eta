@@ -132,7 +132,7 @@ const AddProduct = ({ history }) => {
   return (
     <div>
       <Container>
-        <h2 className="p-4">Add Product</h2>
+        <h2 className="p-4 fw-bold">Add Product</h2>
         {loadingCreate && <Loader />}
         {errorCreate && <Message variant="danger">{errorCreate}</Message>}
 

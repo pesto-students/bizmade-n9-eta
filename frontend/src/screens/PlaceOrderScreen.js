@@ -68,11 +68,11 @@ const PlaceOrderScreen = ({ history }) => {
     <>
       {/* <CheckoutSteps step1 step2 step3 step4 /> */}
       <Row>
-        <Col md={8}>
+        <Col md={6}>
           <ListGroup variant="flush">
             <ListGroup.Item>
-              <h3 style={{ textAlign: "left" }}>Shipping</h3>
-              <p style={{ textAlign: "left" }}>
+              <h3 className="float-start fw-bold blue">Shipping</h3>
+              <p className="float-start blue">
                 <strong>
                   <b>ADDRESS : </b>
                 </strong>
@@ -83,19 +83,19 @@ const PlaceOrderScreen = ({ history }) => {
             </ListGroup.Item>
 
             <ListGroup.Item>
-              <h3 style={{ textAlign: "left" }}>Payment Method</h3>
-              <p style={{ textAlign: "left" }}>
+              <h3 className="float-start fw-bold blue">Payment Method</h3>
+              <p className="float-start">
                 <strong>METHOD : </strong>
                 {cart.paymentMethod}
               </p>
             </ListGroup.Item>
 
             <ListGroup.Item>
-              <h3 style={{ textAlign: "left" }}>Order Items</h3>
+              <h3 className="float-start fw-bold blue">Order Items</h3>
               {cart.cartItems.length === 0 ? (
                 <Message>Your cart is empty</Message>
               ) : (
-                <ListGroup variant="flush" style={{ textAlign: "left" }}>
+                <ListGroup variant="flush" className="float-start">
                   {cart.cartItems.map((item, index) => (
                     <ListGroup.Item key={index} style={{ paddingLeft: "0" }}>
                       <Row>
@@ -123,11 +123,11 @@ const PlaceOrderScreen = ({ history }) => {
             </ListGroup.Item>
           </ListGroup>
         </Col>
-        <Col md={4}>
+        <Col md={6}>
           <Card>
             <ListGroup variant="flush">
               <ListGroup.Item>
-                <h2>Order Summary</h2>
+                <h2 className=" fw-bold blue">Order Summary</h2>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>

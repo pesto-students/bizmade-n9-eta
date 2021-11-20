@@ -34,7 +34,7 @@ const Register = ({ location, history }) => {
 
   return (
     <FormContainer>
-      <h2 style={{ color: "#0fafe9", textAlign: "initial" }}>Sign Up</h2>
+      <h2 className="fw-bold blue" style={{textAlign: "initial" }}>Sign Up</h2>
       {error && <Message variant="danger">{error}</Message>}
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
@@ -103,7 +103,7 @@ const Register = ({ location, history }) => {
 
       <Row className="py-3">
         <Col>
-          Have an Account? <Link to="/login">Login</Link>
+          Have an Account? <Link className="blue" to="/login">Login</Link>
         </Col>
       </Row>
     </FormContainer>

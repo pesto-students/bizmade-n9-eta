@@ -56,7 +56,7 @@ const ProfilePage = ({ location, history }) => {
   return (
     <div>
       <Container>
-        <h2 className="p-4">Account Details</h2>
+        <h2 className="p-4 fw-bold">Account Details</h2>
         {message && <Message variant="danger">{message}</Message>}
         {}
         {success && <Message variant="success">Profile Updated</Message>}
@@ -136,7 +136,7 @@ const ProfilePage = ({ location, history }) => {
                   Save Changes
                 </Button>
               </Col>
-              <h2 className="p-4">Change Password</h2>
+              <h2 className="p-4 fw-bold">Change Password</h2>
               <Col md={6}>
                 <Form.Group
                   className="mb-1"
