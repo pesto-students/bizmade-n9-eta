@@ -84,6 +84,12 @@ button:hover {
   object-fit: cover;
 }
 
+@media screen and (max-width: 480px) {
+  .card-img-top {
+    height: auto;
+  }
+}
+
 .card-title {
   font-size: 20px;
   overflow: hidden;
@@ -91,9 +97,15 @@ button:hover {
 }
 
 .carousel {
-  width:500px;
-  max-height:500px;
+  width: 500px;
+  max-height: 500px;
   margin: auto;
   object-fit: auto;
   overflow: auto;
+}
+
+.card-image {
+  @media (max-width: 400px) {
+    height: auto;
+  }
 }
