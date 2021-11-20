@@ -4,16 +4,16 @@ import {
   CART_ADD_REQUEST,
   CART_ADD_SUCCESS,
   CART_ADD_FAIL,
-  CART_DETAILS_REQUEST,
-  CART_DETAILS_SUCCESS,
-  CART_DETAILS_FAIL,
-  CART_CLEAR_ITEMS,
+  // CART_DETAILS_REQUEST,
+  // CART_DETAILS_SUCCESS,
+  // CART_DETAILS_FAIL,
+  // CART_CLEAR_ITEMS,
   CART_REMOVE_REQUEST,
-  CART_REMOVE_SUCCESS,
-  CART_REMOVE_FAIL,
-  CART_UPDATE_REQUEST,
-  CART_UPDATE_SUCCESS,
-  CART_UPDATE_FAIL,
+  // CART_REMOVE_SUCCESS,
+  // CART_REMOVE_FAIL,
+  // CART_UPDATE_REQUEST,
+  // CART_UPDATE_SUCCESS,
+  // CART_UPDATE_FAIL,
   CART_SAVE_SHIPPING_ADDRESS,
   CART_SAVE_PAYMENT_METHOD,
 } from "../constants/cartConstants";
@@ -48,11 +48,11 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    const cartStuff = await axios.get(`${baseURL}/api/cart`, {
-      params: {
-        email: userInfo.email,
-      },
-    });
+    // const cartStuff = await axios.get(`${baseURL}/api/cart`, {
+    //   params: {
+    //     email: userInfo.email,
+    //   },
+    // });
 
     // console.log(cartStuff);
 
@@ -166,19 +166,16 @@ export const removeFromCart = (id) => (dispatch, getState) => {
   });
 
   try {
-    const {
-      userLogin: { userInfo },
-    } = getState();
-
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    };
-
+    // const {
+    //   userLogin: { userInfo },
+    // } = getState();
+    // const config = {
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Authorization: `Bearer ${userInfo.token}`,
+    //   },
+    // };
     // const { data } = await axios.delete(`${baseURL}/api/cart/${id}`, config);
-
     // dispatch({
     //   type: CART_REMOVE_SUCCESS,
     //   payload: data,

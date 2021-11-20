@@ -1,8 +1,4 @@
 import React from "react";
-import Facebook from "./images/facebook.png";
-import Instagram from "./images/instagram.png";
-import LinkedIn from "./images/linkedin.png";
-import Twitter from "./images/twitter.png";
 // import "./Footer.css";
 import { Container, Row, Col, Nav } from "react-bootstrap";
 

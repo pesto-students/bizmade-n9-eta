@@ -1,19 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import Product from "../components/Product";
 import "./HomeScreen.css";
-import axios from "axios";
-import products from "../products";
 import ProductCarousel from "../components/ProductCarousel";
 
 import { useDispatch, useSelector } from "react-redux";
-import { listDataCreator } from "../actions/combinedActions.js";
 import ManufacLandingPage from "./ManufacLandingPage";
 import {
   listProducts,
   listManufacturerProducts,
 } from "../actions/productActions";
-import { listUsers } from "../actions/userActions";
 import Paginate from "../components/Paginate";
 
 function HomeScreen({ match, history }) {
@@ -32,7 +28,6 @@ function HomeScreen({ match, history }) {
   // const error = null
   const keyword = match.params.keyword;
   const pageNumber = match.params.pageNumber || 1;
-  const [items, setItems] = useState("");
   const dispatch = useDispatch();
 
   const productList = useSelector((state) => {
@@ -44,7 +39,7 @@ function HomeScreen({ match, history }) {
 
   const { loading, error, products, page, pages } = productList;
 
-  const userList = useSelector((state) => state.userList);
+  // const userList = useSelector((state) => state.userList);
 
   useEffect(() => {
     if (userInfo && userInfo.isManufacturer) {
@@ -57,13 +52,12 @@ function HomeScreen({ match, history }) {
   const categoriesArray = [];
   const categories = () => {
     products.map((p) => {
-     
-        categoriesArray.push(p.category);
-        console.log(p.category);
-     
+      categoriesArray.push(p.category);
+      console.log(p.category);
+
       return categoriesArray;
     });
-  }
+  };
   categories();
   console.log(categoriesArray);
 
@@ -121,7 +115,9 @@ function HomeScreen({ match, history }) {
                           className="all"
                           name="fq"
                           data-value="all"
-                          onClick={() => { history.push("/") }}
+                          onClick={() => {
+                            history.push("/");
+                          }}
                         >
                           All
                         </div>
@@ -181,7 +177,6 @@ function HomeScreen({ match, history }) {
                         >
                           Beauty & Personal care
                         </div>
-                        
                       </div>
                     </div>
                   </Col>

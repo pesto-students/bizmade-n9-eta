@@ -3,21 +3,19 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../styles.css";
-import { Container, ListGroup, Row, Col, Table, Image } from "react-bootstrap";
+import { Container, Row, Col, Table } from "react-bootstrap";
 import FormContainer from "../components/FormContainer";
 import { Link } from "react-router-dom";
 import { savePaymentMethod } from "../actions/cartActions";
 import { Form } from "react-bootstrap";
-// import CheckoutSteps from '../components/CheckoutSteps'
 import { saveShippingAddress } from "../actions/cartActions";
-import PaymentScreen from "./PaymentScreen";
 import { createOrder } from "../actions/orderActions";
 import { ORDER_CREATE_RESET } from "../constants/orderConstants";
 import { USER_DETAILS_RESET } from "../constants/userConstants";
 
 const ShippingScreen = ({ history }) => {
   const cart = useSelector((state) => state.cart);
-  const { cartItems, shippingAddress } = cart;
+  const { shippingAddress } = cart;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -46,7 +44,6 @@ const ShippingScreen = ({ history }) => {
     Number(cart.taxPrice) -
     Number(totalDiscount)
   ).toFixed(2);
-  const [paymentMethod, setPaymentMethod] = useState("");
 
   const [firstName, setFirstName] = useState(shippingAddress.firstName);
   const [lastName, setLastname] = useState(shippingAddress.lastName);
@@ -59,36 +56,19 @@ const ShippingScreen = ({ history }) => {
 
   const dispatch = useDispatch();
   const orderCreate = useSelector((state) => state.orderCreate);
-  const { order, success, error } = orderCreate;
+  const { order, success } = orderCreate;
 
   useEffect(() => {
-    // console.log("user info is ");
-    // console.log(JSON.stringify(user));
     if (success) {
       history.push(`/order/${order._id}`);
       dispatch({ type: USER_DETAILS_RESET });
       dispatch({ type: ORDER_CREATE_RESET });
+    } else {
+      dispatch(savePaymentMethod("PayPal"));
     }
-    // eslint-disable-next-line
   }, [history, success]);
 
-  // const placeOrderHandler = () => {
-  //   dispatch(
-  //     createOrder({
-  //       // user,
-  //       orderItems: cart.cartItems,
-  //       shippingAddress: cart.shippingAddress,
-  //       paymentMethod: cart.paymentMethod,
-  //       itemsPrice: cart.itemsPrice,
-  //       shippingPrice: cart.shippingPrice,
-  //       taxPrice: cart.taxPrice,
-  //       totalPrice: cart.totalPrice,
-  //     })
-  //   );
-  // };
-
   const setPaymentHandler = (value) => {
-    // e.preventDefault();
     dispatch(savePaymentMethod(value));
   };
 
@@ -121,23 +101,6 @@ const ShippingScreen = ({ history }) => {
         isPaid: false,
       })
     );
-    // history.push("/placeorder");
-
-    // console.log(
-    //   JSON.stringify({
-    //     firstName,
-    //     lastName,
-    //     address,
-    //     city,
-    //     email,
-    //     postalCode,
-    //     country,
-    //     phone,
-    //     email,
-    //   })
-    // );
-
-    // history.push("/payment");
   };
 
   return (
@@ -257,20 +220,21 @@ const ShippingScreen = ({ history }) => {
                 <Form>
                   <Form.Group>
                     <Col>
-                      <Form.Check
+                      {/* <Form.Check
                         type="radio"
                         label="Razorpay"
                         id="Razorpay"
                         name="paymentMethod"
                         value="Razorpay"
                         onChange={(e) => setPaymentHandler(e.target.value)}
-                      ></Form.Check>
+                      ></Form.Check> */}
                       <Form.Check
                         type="radio"
                         label="PayPal or Credit Card"
                         id="PayPal"
                         name="paymentMethod"
                         value="PayPal"
+                        checked="true"
                         onChange={(e) => setPaymentHandler(e.target.value)}
                       ></Form.Check>
                     </Col>

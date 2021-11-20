@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { Container, Row, Col, Table, Image } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import "../styles.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Button from "@restart/ui/esm/Button";
 import { Link } from "react-router-dom";
 

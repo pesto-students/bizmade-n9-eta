@@ -1,10 +1,3 @@
-const apiEnum = {
-  products: "products",
-  users: "users",
-};
-
-// const apiType = apiEnum.products;
-
 export const createDataReducer =
   (apiType) =>
   (state = { [apiType]: [] }, { type, payload }) => {
