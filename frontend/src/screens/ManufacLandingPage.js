@@ -55,7 +55,7 @@ const ManufacLandingPage = ({ products, manufacturer, history }) => {
 
                       <Card.Body className="text-left">
                         <Card.Title as="div">
-                          <h3><strong>{product.name}</strong></h3>
+                          <h2><strong>{product.name}</strong></h2>
                         </Card.Title>
 
                         <Card.Text
