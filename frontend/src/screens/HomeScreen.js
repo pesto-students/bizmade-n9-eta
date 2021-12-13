@@ -154,9 +154,9 @@ function HomeScreen({ match, history }) {
                           Machinery
                         </div>
                         <div
-                          className="entertainment"
+                          className="sports"
                           name="fq"
-                          data-value="entertainment"
+                          data-value="sports"
                           onClick={(e) => categoryHandler(e)}
                         >
                           Sports
