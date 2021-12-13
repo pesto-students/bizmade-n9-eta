@@ -159,7 +159,7 @@ function HomeScreen({ match, history }) {
                           data-value="entertainment"
                           onClick={(e) => categoryHandler(e)}
                         >
-                          Entertainment
+                          Sports
                         </div>
                         <div
                           className="home"
