@@ -227,7 +227,7 @@ const AddProduct = ({ history }) => {
                   <option value="Healthcare">Healthcare</option>
                   <option value="Home">Home</option>
                   <option value="Beauty">Beauty and Personal care</option>
-                  <option value="Entertainment">Entertainment</option>
+                  <option value="Sports">Sports</option>
                   <option value="Machinery">Machinery</option>
                 </Form.Select>
               </Form.Group>

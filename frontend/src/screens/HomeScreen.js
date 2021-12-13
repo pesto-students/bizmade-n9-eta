@@ -122,6 +122,14 @@ function HomeScreen({ match, history }) {
                           All
                         </div>
                         <div
+                          className="sports"
+                          name="fq"
+                          data-value="sports"
+                          onClick={(e) => categoryHandler(e)}
+                        >
+                          Sports
+                        </div>
+                        <div
                           className="clothes"
                           name="fq"
                           data-value="Clothing"
@@ -152,14 +160,6 @@ function HomeScreen({ match, history }) {
                           onClick={(e) => categoryHandler(e)}
                         >
                           Machinery
-                        </div>
-                        <div
-                          className="entertainment"
-                          name="fq"
-                          data-value="entertainment"
-                          onClick={(e) => categoryHandler(e)}
-                        >
-                          Entertainment
                         </div>
                         <div
                           className="home"
