@@ -8,8 +8,8 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 
 const Login = ({ location, history }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("dealer1@example.com");
+  const [password, setPassword] = useState("123456");
 
   const dispatch = useDispatch();
 
@@ -63,9 +63,12 @@ const Login = ({ location, history }) => {
           SIGN IN
         </Button>
         <p>
-          Test Credentials for testing (Email/Password)<br></br> Dealer :
-          dealer1@example.com/123456<br></br>Manufacturer :
-          manufacturer@example.com/123456
+          Test Credentials for testing (Email/Password)
+          <br>
+            {/* </br> Dealer :
+          dealer1@example.com/123456<br> */}
+          </br>
+          Manufacturer : manufacturer@example.com/123456
         </p>
       </Form>
 
