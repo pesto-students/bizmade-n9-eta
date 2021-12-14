@@ -55,7 +55,7 @@ Test payment details:<br /><br />
 <h1><a name="Authors">Authors</a></h1>
 •	<a href="https://github.com/anhad922/" target="_blank">Anhad Singh</a><br />
 •	<a href="https://github.com/VenkataLeela02/" target="_blank">Leela Teja</a><br />
-•	Sidharth Raj<br />
+•	<a href="https://github.com/sidR0" target="_blank">Sidharth Raj</a><br />
 
 <h1><a name="License">License</a></h1>
 <a href="https://opensource.org/licenses/MIT">MIT</a>
