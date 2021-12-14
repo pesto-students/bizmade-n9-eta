@@ -1,52 +1,65 @@
-
-
-
-
-
+ 
 BizMade
-A B2B Application to connect Dealers and Manufacturers
 
-Overview
-Our platform will help manufacturers and Dealers to improve their business by giving the manufacturer the advantage of listing their products on our platform and the Dealers the advantage of exploring through a diverse list of products of different manufacturers.
+BizMade is a B2B e-commerce platform which helps manufacturers and dealers to improve their business by giving the manufacturer the advantage of listing their products on our platform and the dealers the advantage of exploring through a diverse range of products listed by different manufacturers.
+After successful registration, the dealer can select products of any manufacturer, make payment and get the products delivered. Whereas the manufacturer can view all the products listed by him, receive orders and update the order status.
+We have provided the best UI experience by providing separate interface for both dealers and manufacturers where they view only the functionalities that pertain to them.
+Welcome! we hope you enjoy the site as much as we enjoyed making it.
 
-Features
-The application provides the following features -
-•	Using our platform the dealer can select products of any manufacturer, make payment and get the products delivered.  
-•	Our goal is to bridge the gap between manufacturers and Dealers and make the virtual business a seamless experience for both manufacturers and Dealers by providing the best user experience UI design.
-•	Provides best experience for both the Dealers and manufacturers at a single platform.
-•	Providing all basic functionalities which our users will be looking for in this product.
-•	To compete with other B2B products which lag in some parts and to overcome the odds.
 
-Tech Stack: React, Redux, Express Node, Mongoose
+## **Table of Content**
+#### 1.	<a href="(Demo)">Demo</a>
+#### 2.	<a href="(Installation)">Installation</a>
+#### 3.	<a href="(Technology Stack)">Technology Stack</a>
+#### 4.	<a href="(Authors)">Authors</a>
+#### 5.	<a href="(License)">License</a>License
 
-CSS Frameworks: React Bootstrap
 
-Languages: Javascript
 
-Deployment: Netlify for Frontend, Heroku for Backend
 
-Version Control: Git
-
-Installation
-
-To install the project, run command
-
-  npm install
-  
-To test the project, run command
-
-  npm run test
-  
-To build the project, run command
-
-  npm run build
+**Demo**
+Live Demo
 
 Test Credentials:
-For Dealer Login: Dealers1@example.com / 123456
-For Manufacturer Login: manufacturer@example.com / 123456
+•	For Dealer
+o	Email:  dealer1@example.com
+o	Password: 123456
+•	For Manufacturer
+o	Email: manufacturer@example.com
+o	Password: 123456
 
-Authors
-@Leela Teja 
-@Anhad Singh
-@Sidharth Raj
+
+Test payment details:
+We have integrated PayPal checkout. To make an order, you'll need to make a dummy payment on PayPal checkout. Use the following login credentials to use the dummy payment:
+•	Username: sb-p2z47f8428303@personal.example.com
+•	Password: .*qMb47X
+
+
+**Installation**
+•	Fork or directly clone this repository to your local machine
+•	Use the npm install command to install dependencies
+•	Once the dependencies are finished installing, use the npm start command inside the root directory to open the app in your local browser of choice
+
+
+**Technology Stack**
+We tried to use a completely modern tech stack while testing out some new technologies that we had never used before. This resulted in a fast, performant, and easily-extensible web app that should be fairly future-proof for the coming next several years. We used:
+•	React
+•	Redux
+•	Node JS
+•	Express JS
+•	MongoDB
+•	Bootstrap
+
+**Authors**
+•	Anhad Singh
+•	Leela Teja
+•	Sidharth Raj
+
+
+**License**
+MIT
+
+
+
+
 
