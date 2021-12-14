@@ -8,7 +8,7 @@ Welcome! we hope you enjoy the site as much as we enjoyed making it.
 
 
 ## **Table of Content**
-#### 1.	<a href="Demo">Demo</a>
+#### 1.	<a href="#Demo">Demo</a>
 #### 2.	<a href="(Installation)">Installation</a>
 #### 3.	<a href="(Technology Stack)">Technology Stack</a>
 #### 4.	<a href="(Authors)">Authors</a>
