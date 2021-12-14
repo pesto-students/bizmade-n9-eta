@@ -1,5 +1,7 @@
+  
+
  [![Netlify Status](https://api.netlify.com/api/v1/badges/e6e8742e-1da0-4827-b3f4-910e4073cb2e/deploy-status)](https://app.netlify.com/sites/bizmade-development-site/deploys)
-<h1 align="center">BizMade</h1>
+ <h1 align="center">BizMade</h1>
 
 BizMade is a B2B e-commerce platform which helps manufacturers and dealers to improve their business by giving the manufacturer the advantage of listing their products on our platform and the dealers the advantage of exploring through a diverse range of products listed by different manufacturers.<br /><br />
 After successful registration, the dealer can select products of any manufacturer, make payment and get the products delivered. Whereas the manufacturer can view all the products listed by him, receive orders and update the order status.<br /><br />
