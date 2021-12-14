@@ -1,63 +1,64 @@
  
-BizMade
+<h1 align="center">BizMade</h1>
 
-BizMade is a B2B e-commerce platform which helps manufacturers and dealers to improve their business by giving the manufacturer the advantage of listing their products on our platform and the dealers the advantage of exploring through a diverse range of products listed by different manufacturers.
-After successful registration, the dealer can select products of any manufacturer, make payment and get the products delivered. Whereas the manufacturer can view all the products listed by him, receive orders and update the order status.
+BizMade is a B2B e-commerce platform which helps manufacturers and dealers to improve their business by giving the manufacturer the advantage of listing their products on our platform and the dealers the advantage of exploring through a diverse range of products listed by different manufacturers.<br /><br />
+After successful registration, the dealer can select products of any manufacturer, make payment and get the products delivered. Whereas the manufacturer can view all the products listed by him, receive orders and update the order status.<br /><br />
 We have provided the best UI experience by providing separate interface for both dealers and manufacturers where they view only the functionalities that pertain to them.
 Welcome! we hope you enjoy the site as much as we enjoyed making it.
 
 
 ## **Table of Content**
 #### 1.	[Demo](#Demo)
-#### 2.	<a href="(Installation)">Installation</a>
-#### 3.	<a href="(Technology Stack)">Technology Stack</a>
-#### 4.	<a href="(Authors)">Authors</a>
-#### 5.	<a href="(License)">License</a>
+#### 2.	[Installation](#Installation)
+#### 3.	[Technology Stack](#Technology_Stack)
+#### 4.	[Authors](#Authors)
+#### 5.	[License](#License)
+
+<br /><br />
+
+<h1><a name="Demo">Demo</a></h1><br />
+<a href="https://bizmade.netlify.app/">Live Demo</a>
+
+<br /><br />
+
+Test Credentials:<br /><br />
+•	For Dealer<br />
+o	Email:  dealer1@example.com<br />
+o	Password: 123456<br /><br />
+•	For Manufacturer<br />
+o	Email: manufacturer@example.com<br />
+o	Password: 123456<br />
+
+<br />
+Test payment details:<br />
+<p>We have integrated PayPal checkout. To make an order, you'll need to make a dummy payment on PayPal checkout. Use the following login credentials to use the dummy payment:</p>
+•	Username: sb-p2z47f8428303@personal.example.com <br/>
+•	Password: .*qMb47X <br/>
+
+<br />
+
+<h1><a name="Installation">Installation</a></h1>
+•	Fork or directly clone this repository to your local machine<br />
+•	Use the npm install command to install dependencies<br />
+•	Once the dependencies are finished installing, use the npm start command inside the root directory to open the app in your local browser of choice<br />
 
 
+<h1><a name="Technology_Stack">Technology Stack</a></h1>
 
+•	React<br />
+•	Redux<br />
+•	Node JS<br />
+•	Express JS<br />
+•	MongoDB<br />
+•	Bootstrap<br />
 
-**Demo**
-Live Demo
+<h1><a name="Authors">Authors</a></h1>
+•	<a href="https://github.com/anhad922/" target="_blank">Anhad Singh</a><br />
+•	<a href="https://github.com/VenkataLeela02/" target="_blank">Leela Teja</a><br />
+•	Sidharth Raj<br />
 
-Test Credentials:
-•	For Dealer
-o	Email:  dealer1@example.com
-o	Password: 123456
-•	For Manufacturer
-o	Email: manufacturer@example.com
-o	Password: 123456
-
-
-Test payment details:
-We have integrated PayPal checkout. To make an order, you'll need to make a dummy payment on PayPal checkout. Use the following login credentials to use the dummy payment:
-•	Username: sb-p2z47f8428303@personal.example.com
-•	Password: .*qMb47X
-
-
-**Installation**
-•	Fork or directly clone this repository to your local machine
-•	Use the npm install command to install dependencies
-•	Once the dependencies are finished installing, use the npm start command inside the root directory to open the app in your local browser of choice
-
-
-**Technology Stack**
-We tried to use a completely modern tech stack while testing out some new technologies that we had never used before. This resulted in a fast, performant, and easily-extensible web app that should be fairly future-proof for the coming next several years. We used:
-•	React
-•	Redux
-•	Node JS
-•	Express JS
-•	MongoDB
-•	Bootstrap
-
-**Authors**
-•	Anhad Singh
-•	Leela Teja
-•	Sidharth Raj
-
-
-**License**
-MIT
+<h1><a name="License">License</a></h1>
+<a href="https://opensource.org/licenses/MIT">MIT</a>
 
 
 
