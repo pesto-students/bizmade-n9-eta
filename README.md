@@ -6,7 +6,7 @@ After successful registration, the dealer can select products of any manufacture
 We have provided the best UI experience by providing separate interface for both dealers and manufacturers where they view only the functionalities that pertain to them.<br/><br />
 Welcome! we hope you enjoy the site as much as we enjoyed making it.
 
-
+<br />
 ## **Table of Content**
 #### 1.	[Demo](#Demo)
 #### 2.	[Installation](#Installation)
