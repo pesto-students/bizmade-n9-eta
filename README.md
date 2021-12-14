@@ -4,9 +4,9 @@
 BizMade is a B2B e-commerce platform which helps manufacturers and dealers to improve their business by giving the manufacturer the advantage of listing their products on our platform and the dealers the advantage of exploring through a diverse range of products listed by different manufacturers.<br /><br />
 After successful registration, the dealer can select products of any manufacturer, make payment and get the products delivered. Whereas the manufacturer can view all the products listed by him, receive orders and update the order status.<br /><br />
 We have provided the best UI experience by providing separate interface for both dealers and manufacturers where they view only the functionalities that pertain to them.<br/><br />
-Welcome! we hope you enjoy the site as much as we enjoyed making it.
+Welcome! we hope you enjoy the site as much as we enjoyed making it.<br /><br />
 
-<br />
+
 ## **Table of Content**
 #### 1.	[Demo](#Demo)
 #### 2.	[Installation](#Installation)
