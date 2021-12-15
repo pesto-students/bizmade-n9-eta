@@ -9,7 +9,7 @@ We have provided the best UI experience by providing separate interface for both
 Welcome! we hope you enjoy the site as much as we enjoyed making it.<br /><br />
 
 
-## **Table of Content**
+## **Table of Contents**
 #### 1.	[Demo](#Demo)
 #### 2.	[Installation](#Installation)
 #### 3.	[Technology Stack](#Technology_Stack)
@@ -46,11 +46,12 @@ Test payment details:<br /><br />
 
 
 <h1><a name="Technology_Stack">Technology Stack</a></h1>
-Frontend<br />
+<b><u>Frontend</u></b><br />
 •	React<br />
 •	Redux<br />
 •	Bootstrap<br />
-Backend<br />
+
+<b><u>Backend</u></b><br />
 •	Node JS<br />
 •	Express JS<br />
 •	MongoDB<br />
