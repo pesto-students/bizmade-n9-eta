@@ -46,13 +46,15 @@ Test payment details:<br /><br />
 
 
 <h1><a name="Technology_Stack">Technology Stack</a></h1>
-
+Frontend
 •	React<br />
 •	Redux<br />
+•	Bootstrap<br />
+Backend
 •	Node JS<br />
 •	Express JS<br />
 •	MongoDB<br />
-•	Bootstrap<br />
+
 
 <h1><a name="Authors">Authors</a></h1>
 •	<a href="https://github.com/anhad922/" target="_blank">Anhad Singh</a><br />
