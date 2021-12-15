@@ -50,7 +50,7 @@ Test payment details:<br /><br />
 •	React<br />
 •	Redux<br />
 •	Bootstrap<br />
-
+<pre></pre>
 <b><u>Backend</u></b><br />
 •	Node JS<br />
 •	Express JS<br />
