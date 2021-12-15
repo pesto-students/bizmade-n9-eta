@@ -46,11 +46,11 @@ Test payment details:<br /><br />
 
 
 <h1><a name="Technology_Stack">Technology Stack</a></h1>
-Frontend
+Frontend<br />
 •	React<br />
 •	Redux<br />
 •	Bootstrap<br />
-Backend
+Backend<br />
 •	Node JS<br />
 •	Express JS<br />
 •	MongoDB<br />
