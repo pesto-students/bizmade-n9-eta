@@ -18,7 +18,7 @@ function Product({ product }) {
           </Card.Title>
         </Link>
         <Card.Text
-           style={{ color: "#0fafe9", fontSize: "medium", fontWeight: "500" }}
+           style={{ color: "#0fafe9", fontSize: "medium", fontWeight: "500", height: "30px" }}
           as="h4"
         >
           {product.manufacturer}
