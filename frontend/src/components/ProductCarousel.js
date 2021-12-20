@@ -34,13 +34,13 @@ function ProductCarousel() {
               src={product.image}
               alt={product.name}
             />
-            <Carousel.Caption className="carousel-caption">
-              <h2 style={{ color: "#0fafe9" }}>
-                <strong>
-                  {product.name} (&#8377;{product.price})
-                </strong>
-              </h2>
-            </Carousel.Caption>
+//             <Carousel.Caption className="carousel-caption">
+//               <h2 style={{ color: "#0fafe9" }}>
+//                 <strong>
+//                   {product.name} (&#8377;{product.price})
+//                 </strong>
+//               </h2>
+//             </Carousel.Caption>
           </Link>
         </Carousel.Item>
       ))}
